@@ -16,7 +16,10 @@ export async function HomeCategories() {
         .reverse()
         .slice(0, 2)
         .map(({ id, slug }) => (
-          <Suspense fallback={<ProductGridItemsSkeleton className="mt-14" />}>
+          <Suspense
+            key={id}
+            fallback={<ProductGridItemsSkeleton className="mt-14" />}
+          >
             <HomeCategory className="mt-14" key={id} slug={slug} />
           </Suspense>
         ))}
