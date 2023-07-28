@@ -3,7 +3,7 @@ import { CategoryProps, HomeCategory } from "./category";
 
 type Props = {};
 
-export async function GridCategories({}: Props) {
+export async function SummaryCategories({}: Props) {
   const data = await commerce.categories.list({
     limit: 4,
   });

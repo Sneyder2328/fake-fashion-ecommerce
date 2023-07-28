@@ -1,9 +1,7 @@
 import { MainCategory } from "@/app/categories/[slug]/_components/main";
 import { SectionHeader } from "@/app/layout/section-header";
-import { ProductGridItems } from "@/app/products/[permalink]/_components/grid/product-grid-items";
-import commerce from "@/app/_lib/commerce";
+import { ProductGridItemsSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-items";
 import { InternalLinks } from "@/app/_lib/constants";
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
 type Props = {
@@ -12,12 +10,6 @@ type Props = {
   };
 };
 export default function Category({ params: { slug } }: Props) {
-  // const { data: products } = await commerce.products.list({
-  //   category_slug: slug.toLowerCase(),
-  // });
-
-  // if (!products) return notFound();
-
   return (
     <div>
       <SectionHeader
@@ -32,7 +24,7 @@ export default function Category({ params: { slug } }: Props) {
         ]}
       />
       <div className="inner">
-        <Suspense fallback={<ProductGridItems products={undefined} />}>
+        <Suspense fallback={<ProductGridItemsSkeleton />}>
           <MainCategory slug={slug} />
         </Suspense>
       </div>

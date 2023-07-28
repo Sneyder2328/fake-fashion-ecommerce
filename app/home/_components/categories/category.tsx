@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { ProductGridItems } from "../../products/[permalink]/_components/grid/product-grid-items";
+import { ProductGridItems } from "../../../products/[permalink]/_components/grid/product-grid-items";
 import { InternalLinks } from "@/app/_lib/constants";
 import commerce from "@/app/_lib/commerce";
 
