@@ -1,8 +1,5 @@
 import { HomeBlog } from "@/app/home/_components/blog";
-import {
-  CategoryProps,
-  GridCategories,
-} from "@/app/home/_components/grid-categories";
+import { GridCategories } from "@/app/home/_components/grid-categories";
 import { HomeCategory } from "@/app/home/_components/category";
 import { FormOffer } from "@/app/home/_components/form-offer";
 import { HomeOfferings } from "@/app/home/_components/offerings";

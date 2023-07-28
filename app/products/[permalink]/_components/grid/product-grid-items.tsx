@@ -10,7 +10,7 @@ export function ProductGridItems({ products }: Props) {
       {!products &&
         Array(4)
           .fill(1)
-          .map(() => <CardSkeleton />)}
+          .map((v) => <CardSkeleton key={v} />)}
       {products?.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
