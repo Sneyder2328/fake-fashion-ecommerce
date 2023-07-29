@@ -15,13 +15,13 @@ export async function SummaryCategories({}: Props) {
       name,
       slug,
       assets,
-    })
+    }),
   );
 
   return (
     <div
       className={
-        "inner grid grid-cols-1 xs:grid-cols-2 grid-rows-2 gap-4 md:grid-cols-4 md:max-h-96 xl:max-h-[480px] 2xl:max-h-[540px]"
+        "inner grid grid-cols-1 grid-rows-2 gap-4 xs:grid-cols-2 md:max-h-96 md:grid-cols-4 xl:max-h-[480px] 2xl:max-h-[540px]"
       }
     >
       {!!categories?.[0] && (

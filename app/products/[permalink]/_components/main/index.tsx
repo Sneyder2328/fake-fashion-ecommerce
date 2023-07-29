@@ -33,12 +33,14 @@ type Props = {
   colorOptions: ProductVariantOption[] | undefined;
   sizeOptions: ProductVariantOption[] | undefined;
   variantsIndexedByColor: Record<string, OptionPlusVariants> | undefined;
+  Reviews: any;
 };
 
 export function ProductMain({
   colorOptions,
   sizeOptions,
   variantsIndexedByColor,
+  Reviews,
 }: Props) {
   const searchParams = useSearchParams()!;
 
@@ -146,6 +148,7 @@ export function ProductMain({
             price={variantSelected?.price?.formatted_with_symbol}
             isAvailable={variantSelected?.isVariantAvailable}
           />
+          {Reviews}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ function BannerText({ text, className }: { text: string; className?: string }) {
     <div
       className={classNames(
         className,
-        "uppercase text-2xl font-bold bg-white pt-1 pb-1 pl-4 pr-4"
+        "bg-white pb-1 pl-4 pr-4 pt-1 text-2xl font-bold uppercase",
       )}
     >
       {text}
@@ -26,18 +26,18 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
     <div
       className={classNames(
         category.className,
-        "relative hover:cursor-pointer group"
+        "group relative hover:cursor-pointer",
       )}
     >
       <Link href={InternalLinks.CATEGORY(category.slug)}>
         <img
           src={category.assets?.[0].url}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
-        <div className="absolute top-0 left-0 w-full h-full opacity-0 bg-black group-hover:opacity-30 transition-opacity duration-400" />
+        <div className="duration-400 absolute left-0 top-0 h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-30" />
         <BannerText
           text={category.name}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded"
         />
       </Link>
     </div>

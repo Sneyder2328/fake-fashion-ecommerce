@@ -8,12 +8,12 @@ import { HomeCategories } from "./home/_components/categories";
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-between pt-8 pb-8">
+    <main className="flex flex-col justify-between pb-8 pt-8">
       <Suspense fallback={<GridCategoriesSkeleton />}>
         <SummaryCategories />
       </Suspense>
       <HomeOfferings className="inner mt-8" />
-      <div className="w-full h-[1px] shadow mt-4" />
+      <div className="mt-4 h-[1px] w-full shadow" />
       <HomeCategories />
       <FormOffer className="mt-14" />
       <HomeBlog className="inner mt-14" />

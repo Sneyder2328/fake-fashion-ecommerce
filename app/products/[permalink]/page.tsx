@@ -10,6 +10,9 @@ import {
 } from "@chec/commerce.js/types/product-variant-group";
 import { Variant } from "@chec/commerce.js/types/variant";
 import { notFound } from "next/navigation";
+import { ProductReviews } from "./_components/reviews";
+import { Suspense } from "react";
+import { ProductReviewsSkeleton } from "./_components/reviews/skeleton";
 
 function filterByName(name: string): (group: ProductVariantGroup) => boolean {
   return (group: ProductVariantGroup) => group.name === name;
@@ -42,10 +45,10 @@ export default async function ProductPage({
   } = product;
 
   const colorVariants: ProductVariantGroup | undefined = variant_groups.find(
-    filterByName(VariantGroups.COLOR)
+    filterByName(VariantGroups.COLOR),
   );
   const sizeVariants: ProductVariantGroup | undefined = variant_groups.find(
-    filterByName(VariantGroups.SIZE)
+    filterByName(VariantGroups.SIZE),
   );
 
   const variantsIndexedByColor: Record<string, OptionPlusVariants> | undefined =
@@ -55,7 +58,7 @@ export default async function ProductPage({
           ...option,
           variants: variants
             .filter(
-              (variant) => variant.options[colorVariants.id] === option.id
+              (variant) => variant.options[colorVariants.id] === option.id,
             )
             .reduce((acc: Record<string, Variant>, curr: Variant) => {
               sizeVariants && (acc[curr.options[sizeVariants.id]] = curr);
@@ -68,7 +71,7 @@ export default async function ProductPage({
           acc[curr.id] = curr;
           return acc;
         },
-        {}
+        {},
       );
 
   return (
@@ -86,6 +89,11 @@ export default async function ProductPage({
         colorOptions={colorVariants?.options}
         sizeOptions={sizeVariants?.options}
         variantsIndexedByColor={variantsIndexedByColor}
+        Reviews={
+          <Suspense fallback={<ProductReviewsSkeleton />}>
+            <ProductReviews />
+          </Suspense>
+        }
       />
       <RelatedProducts relatedProducts={related_products} className="inner" />
     </div>

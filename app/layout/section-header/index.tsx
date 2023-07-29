@@ -33,7 +33,7 @@ export function SectionHeader({ title, items, permalink }: Props) {
           </ul>
           <Share permalink={permalink} name={title} />
         </div>
-        <h2 className="mx-auto w-fit font-bold text-black text-2xl">{title}</h2>
+        <h2 className="mx-auto w-fit text-2xl font-bold text-black">{title}</h2>
       </div>
     </div>
   );

@@ -7,21 +7,21 @@ type Props = {
 };
 export function AddToCart({ price, isAvailable, onClick }: Props) {
   return (
-    <div className="my-6 py-4 border-t border-b border-solid border-gray-200 flex items-center space-x-4">
-      <span className="font-bold text-base">
+    <div className="my-6 flex items-center space-x-4 border-b border-t border-solid border-gray-200 py-4">
+      <span className="text-base font-bold">
         {isAvailable === true && !!price && price}
       </span>
       <button
         disabled={isAvailable !== true}
         onClick={onClick}
         className={classNames(
-          "uppercase text-xs font-light text-white py-[10px] px-5",
+          "px-5 py-[10px] text-xs font-light uppercase text-white",
           {
             "bg-gray-600 hover:cursor-not-allowed": isAvailable !== true,
           },
           {
             "bg-gray-800 hover:bg-gray-600": isAvailable === true,
-          }
+          },
         )}
       >
         {isAvailable === true ? "Add to cart" : "Sold out"}

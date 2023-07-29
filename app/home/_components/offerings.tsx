@@ -18,8 +18,8 @@ function Offering({
   return (
     <div className="flex w-2/3 sm:w-1/3">
       <Icon className="w-8" />
-      <div className="flex flex-col ml-2">
-        <span className="uppercase text-sm font-semibold">{title}</span>
+      <div className="ml-2 flex flex-col">
+        <span className="text-sm font-semibold uppercase">{title}</span>
         <span className="text-xs text-gray-500">{description}</span>
       </div>
     </div>
@@ -31,7 +31,7 @@ export function HomeOfferings({ className }: { className?: string }) {
     <div
       className={classNames(
         className,
-        "flex justify-between items-center space-y-4 flex-col sm:flex-row"
+        "flex flex-col items-center justify-between space-y-4 sm:flex-row",
       )}
     >
       <Offering

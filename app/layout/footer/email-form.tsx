@@ -7,17 +7,17 @@ import InIcon from "../../../public/in-icon.svg";
 export function EmailForm() {
   return (
     <div className="bg-secondary py-6 lg:py-2">
-      <div className="inner flex flex-col space-y-4 lg:space-y-0 lg:flex-row justify-between items-center">
-        <span className="text-white uppercase font-light">
+      <div className="inner flex flex-col items-center justify-between space-y-4 lg:flex-row lg:space-y-0">
+        <span className="font-light uppercase text-white">
           Be in touch with us:
         </span>
-        <form className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row grow lg:items-center lg:space-x-4 lg:w-1/3 justify-center">
+        <form className="flex grow flex-col justify-center space-y-4 lg:w-1/3 lg:flex-row lg:items-center lg:space-x-4 lg:space-y-0">
           <input
             type="text"
             placeholder="Enter your email"
-            className="py-1 px-4 outline-none text-white rounded bg-gray-700 w-full max-w-xs lg:max-w-[250px]"
+            className="w-full max-w-xs rounded bg-gray-700 px-4 py-1 text-white outline-none lg:max-w-[250px]"
           />
-          <button className="uppercase font-light text-white py-1 px-3 border border-solid border-white rounded hover:bg-white hover:text-black transition-colors duration-400">
+          <button className="duration-400 rounded border border-solid border-white px-3 py-1 font-light uppercase text-white transition-colors hover:bg-white hover:text-black">
             JOIN US
           </button>
         </form>

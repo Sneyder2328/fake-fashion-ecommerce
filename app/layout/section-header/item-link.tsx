@@ -15,8 +15,8 @@ export function ItemLink({
       <Link href={href}>
         <span
           className={twMerge(
-            "font-semibold text-sm text-gray-500 hover:underline",
-            className
+            "text-sm font-semibold text-gray-500 hover:underline",
+            className,
           )}
         >
           {text}

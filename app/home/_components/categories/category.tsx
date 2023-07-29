@@ -17,7 +17,7 @@ export async function HomeCategory({
 
   return (
     <div className={classNames(className)}>
-      <h2 className="text-xl font-bold text-gray-800 uppercase">{slug}</h2>
+      <h2 className="text-xl font-bold uppercase text-gray-800">{slug}</h2>
 
       {!!products && (
         <ProductGridItems
@@ -34,7 +34,7 @@ export async function HomeCategory({
       <Link href={InternalLinks.CATEGORY(slug)}>
         <button
           className={
-            "w-full text-sm font-medium text-center text-gray-600 pt-2 pb-2 uppercase bg-gray-200 hover:bg-gray-300"
+            "w-full bg-gray-200 pb-2 pt-2 text-center text-sm font-medium uppercase text-gray-600 hover:bg-gray-300"
           }
         >
           See all

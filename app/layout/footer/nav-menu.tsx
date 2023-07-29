@@ -42,7 +42,7 @@ const MENU_OPTIONS = [
 export function NavMenu() {
   return (
     <div className="bg-white py-8">
-      <ul className="inner grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <ul className="inner grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {MENU_OPTIONS.map((option) => (
           <MenuItem key={option.title} {...option} />
         ))}

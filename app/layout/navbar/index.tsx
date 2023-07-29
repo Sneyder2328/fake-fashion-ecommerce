@@ -17,14 +17,14 @@ function Item({ name, url }: { name: string; url: string }) {
 
 export default function Navbar() {
   return (
-    <div className="shrink-0 w-full h-14 bg-white flex justify-center shadow">
-      <div className="inner h-full flex justify-between items-center">
-        <Link href={"/"}>
-          <h1 className="text-black font-extrabold text-2xl font-serif">
+    <div className="flex h-14 w-full shrink-0 justify-center bg-white shadow">
+      <div className="inner flex h-full items-center justify-between">
+        <Link href={InternalLinks.HOME}>
+          <h1 className="font-serif text-2xl font-extrabold text-black">
             MiSto
           </h1>
         </Link>
-        <ul className="space-x-4 hidden lg:flex">
+        <ul className="hidden space-x-4 lg:flex">
           <Item name="About Us" url="/" />
           <Item name="Women" url={InternalLinks.CATEGORY("women")} />
           <Item name="Men" url={InternalLinks.CATEGORY("men")} />
