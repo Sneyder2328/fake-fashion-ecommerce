@@ -54,3 +54,5 @@ export async function GET(
     countReviews,
   });
 }
+
+export const revalidate = 5 * 60; // keep in cache up to 5 minutes
