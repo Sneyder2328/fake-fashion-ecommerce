@@ -3,19 +3,19 @@ import { DetailsReviews, Review } from "../../reviews/route";
 import { ItemReview } from "./item";
 import { Ratings } from "./ratings";
 
-async function getReviews(): Promise<DetailsReviews> {
+async function getReviews(permalink: string): Promise<DetailsReviews> {
   const data = await fetch(
-    "http://localhost:3000/products/pop-a-bottle-lace-corset-top/reviews",
+    process.env.NEXT_PUBLIC_API_URL + `/products/${permalink}/reviews`,
     {
-      cache: "no-cache",
+      cache: "no-store",
     },
   );
   return data.json();
 }
 
-export async function ProductReviews() {
+export async function ProductReviews({ permalink }: { permalink: string }) {
   const { reviews, countReviews, ratingsAverage }: DetailsReviews =
-    await getReviews();
+    await getReviews(permalink);
 
   return (
     <div className="mt-8s">

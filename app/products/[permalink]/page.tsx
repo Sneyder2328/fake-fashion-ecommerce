@@ -91,7 +91,7 @@ export default async function ProductPage({
         variantsIndexedByColor={variantsIndexedByColor}
         Reviews={
           <Suspense fallback={<ProductReviewsSkeleton />}>
-            <ProductReviews />
+            <ProductReviews permalink={permalink} />
           </Suspense>
         }
       />
