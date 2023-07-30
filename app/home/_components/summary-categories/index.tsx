@@ -1,14 +1,18 @@
-import commerce from "@/app/_lib/commerce";
+import commerce, { wrapAsync } from "@/app/_lib/commerce";
 import { CategoryProps, HomeCategory } from "./category";
 
 type Props = {};
 
 export async function SummaryCategories({}: Props) {
-  const data = await commerce.categories.list({
-    limit: 4,
-  });
+  const [cats] = await wrapAsync(
+    commerce.categories.list({
+      limit: 4,
+    }),
+  );
 
-  const categories: CategoryProps[] = data.data.reverse().map(
+  if (!cats) return null;
+
+  const categories: CategoryProps[] = cats.data.reverse().map(
     // @ts-ignore
     ({ id, name, slug, assets }) => ({
       id,

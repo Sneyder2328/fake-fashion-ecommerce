@@ -1,7 +1,7 @@
 import { SectionHeader } from "@/app/layout/section-header";
 import { ProductMain } from "@/app/products/[permalink]/_components/main";
 import { RelatedProducts } from "@/app/products/[permalink]/_components/grid/related-products";
-import commerce from "@/app/_lib/commerce";
+import commerce, { wrapAsync } from "@/app/_lib/commerce";
 import { InternalLinks, VariantGroups } from "@/app/_lib/constants";
 import { Product } from "@chec/commerce.js/types/product";
 import {
@@ -28,14 +28,18 @@ export default async function ProductPage({
   params: { permalink: string };
 }) {
   const { permalink } = params;
-  const product: Product = await commerce.products.retrieve(permalink, {
-    type: "permalink",
-  });
-
+  const [product] = await wrapAsync(
+    commerce.products.retrieve(permalink, {
+      type: "permalink",
+    }),
+  );
   if (!product) return notFound();
 
-  const variants: Variant[] = (await commerce.products.getVariants(product.id))
-    ?.data;
+  const [dataVariants] = await wrapAsync(
+    commerce.products.getVariants(product.id),
+  );
+  if (!dataVariants) return notFound();
+  const variants: Variant[] = dataVariants?.data;
 
   const {
     name,
