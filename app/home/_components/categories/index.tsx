@@ -10,20 +10,21 @@ export async function HomeCategories() {
     }),
   );
 
+  if (!categories || !categories.data) return null;
+
   return (
     <div className="inner">
-      {!!categories &&
-        categories.data
-          .reverse()
-          .slice(0, 2)
-          .map(({ id, slug }) => (
-            <Suspense
-              key={id}
-              fallback={<ProductGridItemsSkeleton className="mt-14" />}
-            >
-              <HomeCategory className="mt-14" key={id} slug={slug} />
-            </Suspense>
-          ))}
+      {categories.data
+        .reverse()
+        .slice(0, 2)
+        .map(({ id, slug }) => (
+          <Suspense
+            key={id}
+            fallback={<ProductGridItemsSkeleton className="mt-14" />}
+          >
+            <HomeCategory className="mt-14" key={id} slug={slug} />
+          </Suspense>
+        ))}
     </div>
   );
 }

@@ -38,8 +38,8 @@ export default async function ProductPage({
   const [dataVariants] = await wrapAsync(
     commerce.products.getVariants(product.id),
   );
-  if (!dataVariants) return notFound();
-  const variants: Variant[] = dataVariants?.data;
+  if (!dataVariants || !dataVariants.data) return notFound();
+  const variants: Variant[] = dataVariants.data;
 
   const {
     name,

@@ -17,24 +17,23 @@ export async function HomeCategory({
     }),
   );
 
+  if (!products || !products.data) return null;
+
   return (
     <div className={classNames(className)}>
       <h2 className="text-xl font-bold uppercase text-gray-800">{slug}</h2>
 
-      {!!products && (
-        <ProductGridItems
-          products={products.data.map(
-            ({ id, name, price, image, permalink }) => ({
-              id,
-              name,
-              price,
-              image,
-              permalink,
-            }),
-          )}
-        />
-      )}
-
+      <ProductGridItems
+        products={products.data.map(
+          ({ id, name, price, image, permalink }) => ({
+            id,
+            name,
+            price,
+            image,
+            permalink,
+          }),
+        )}
+      />
       <Link href={InternalLinks.CATEGORY(slug)}>
         <button
           className={

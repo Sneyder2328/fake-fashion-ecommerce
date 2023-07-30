@@ -10,7 +10,7 @@ export async function SummaryCategories({}: Props) {
     }),
   );
 
-  if (!cats) return null;
+  if (!cats || !cats.data) return null;
 
   const categories: CategoryProps[] = cats.data.reverse().map(
     // @ts-ignore

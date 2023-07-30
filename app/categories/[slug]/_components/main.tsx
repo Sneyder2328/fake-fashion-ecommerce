@@ -11,7 +11,7 @@ export async function MainCategory({ slug }: Props) {
     category_slug: slug.toLowerCase(),
   }));
   
-  if (!products) return notFound();
+  if (!products || !products.data) return notFound();
 
   return (
     <ProductGridItems
