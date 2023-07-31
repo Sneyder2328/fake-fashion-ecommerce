@@ -22,19 +22,21 @@ export function ProductCard({
     <Link href={`/products/${permalink}`}>
       <div className={twMerge("w-full", className)}>
         <div className="relative">
-          <Image
-            className="w-full"
-            src={image!.url}
-            alt={name}
-            width={1333}
-            height={2000}
-          />
-          <div className="absolute top-0 left-0 w-full h-full opacity-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-black hover:opacity-20 transition-opacity duration-400" />
+          {!!image && (
+            <Image
+              className="w-full"
+              src={image.url}
+              alt={name}
+              width={image.image_dimensions.width}
+              height={image.image_dimensions.height}
+            />
+          )}
+          <div className="duration-400 absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-black opacity-0 transition-opacity hover:opacity-20" />
         </div>
-        <span className="block text-xs font-medium text-gray-500 mt-3">
+        <span className="mt-3 block text-xs font-medium text-gray-500">
           {name}
         </span>
-        <span className="block text-sm font-extrabold mt-[2px]">
+        <span className="mt-[2px] block text-sm font-extrabold">
           {price.formatted_with_symbol}
         </span>
       </div>

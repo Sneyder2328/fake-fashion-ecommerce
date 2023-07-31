@@ -23,6 +23,8 @@ export type CategoryProps = Pick<Category, "id" | "name" | "slug"> & {
 };
 
 export function HomeCategory(category: CategoryProps & { className?: string }) {
+  if (!category.assets?.[0]) return null;
+
   return (
     <div
       className={classNames(
@@ -33,9 +35,9 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
       <Link href={InternalLinks.CATEGORY(category.slug)} className="relative">
         <Image
           className="h-full w-full object-cover"
-          src={category.assets![0].url}
-          width={category.assets![0].image_dimensions.width}
-          height={category.assets![0].image_dimensions.height}
+          src={category.assets[0].url}
+          width={category.assets[0].image_dimensions.width}
+          height={category.assets[0].image_dimensions.height}
           alt={category.name}
         />
         <div className="duration-400 absolute left-0 top-0 h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-30" />

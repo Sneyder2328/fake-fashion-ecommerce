@@ -7,6 +7,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import { Fade, SlideshowRef } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { ImageIndicators } from "./image-indicators";
+import Image from "next/image";
 
 export type ProductGalleryProps = {
   images: {
@@ -26,12 +27,12 @@ export function ProductGallery({ images }: ProductGalleryProps) {
 
   const properties = {
     prevArrow: (
-      <div className="bg-white rounded-full ml-4 p-2 select-none">
+      <div className="ml-4 select-none rounded-full bg-white p-2">
         <ChevronLeftIcon className="w-5 text-gray-500" />
       </div>
     ),
     nextArrow: (
-      <div className="bg-white rounded-full mr-4 p-2 select-none">
+      <div className="mr-4 select-none rounded-full bg-white p-2">
         <ChevronRightIcon className="w-5 text-gray-500" />
       </div>
     ),
@@ -44,7 +45,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
 
   return (
     <div className="flex justify-between">
-      <div className="lg:min-w-[80px] relative">
+      <div className="relative lg:min-w-[80px]">
         <ImageIndicators
           images={images}
           indexSlide={index}
@@ -65,7 +66,13 @@ export function ProductGallery({ images }: ProductGalleryProps) {
           {images.map(({ id, url, image_dimensions: { width, height } }) => (
             <div key={id} className="pl-[1px] pr-[1px]">
               <Zoom>
-                <img src={url} className="w-full select-none" />
+                <Image
+                  src={url}
+                  className="w-full select-none"
+                  alt={id}
+                  width={width}
+                  height={height}
+                />
               </Zoom>
             </div>
           ))}

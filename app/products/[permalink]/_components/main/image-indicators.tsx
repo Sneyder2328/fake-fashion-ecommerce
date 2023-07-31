@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { Scrollbar } from "react-scrollbars-custom";
 import { ProductGalleryProps } from "./gallery";
+import Image from "next/image";
 
 type ImageIndicatorsProps = {
   indexSlide: number;
@@ -13,7 +14,7 @@ export function ImageIndicators({
   images,
 }: ImageIndicatorsProps) {
   return (
-    <div className="hidden lg:overflow-y-auto lg:w-full lg:h-full lg:absolute lg:flex flex-col space-y-4">
+    <div className="hidden flex-col space-y-4 lg:absolute lg:flex lg:h-full lg:w-full lg:overflow-y-auto">
       <Scrollbar
         style={{ width: 80, height: "100%" }}
         noScrollX={true}
@@ -24,18 +25,21 @@ export function ImageIndicators({
           },
         }}
       >
-        {images.map(({ id, url }, i) => (
-          <img
+        {images.map(({ id, url, image_dimensions }, i) => (
+          <Image
             key={id}
             src={url}
+            width={image_dimensions.width}
+            height={image_dimensions.height}
+            alt={id}
             className={classNames(
-              "w-full hover:cursor-pointer border-solid border-2 mb-3 h-[105px]",
+              "mb-3 h-[105px] w-full border-2 border-solid hover:cursor-pointer",
               {
                 "border-gray-500 opacity-100": i === indexSlide,
               },
               {
                 "opacity-50": i !== indexSlide,
-              }
+              },
             )}
             onMouseEnter={() => goToSlide(i)}
           />
