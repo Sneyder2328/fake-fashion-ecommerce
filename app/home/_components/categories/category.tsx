@@ -2,7 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import { ProductGridItems } from "../../../products/[permalink]/_components/grid/product-grid-items";
 import { InternalLinks } from "@/app/_lib/constants";
-import commerce, { wrapAsync } from "@/app/_lib/commerce";
+import { getProductsByCategory } from "@/app/_lib/commerce";
 
 export async function HomeCategory({
   className,
@@ -11,11 +11,7 @@ export async function HomeCategory({
   slug: string;
   className?: string;
 }) {
-  const [products] = await wrapAsync(
-    commerce.products.list({
-      category_slug: slug.toLowerCase(),
-    }),
-  );
+  const [products] = await getProductsByCategory(slug);
 
   if (!products || !products.data) return null;
 

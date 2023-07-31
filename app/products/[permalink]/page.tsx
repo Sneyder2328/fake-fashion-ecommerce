@@ -25,8 +25,12 @@ export type OptionPlusVariants = ProductVariantOption & {
   variants: Record<string, Variant>;
 };
 
-export async function generateMetadata(params: { permalink: string }) {
-  const [product] = await getProduct(params.permalink);
+type Props = {
+  params: { permalink: string };
+};
+
+export async function generateMetadata({ params: { permalink } }: Props) {
+  const [product] = await getProduct(permalink);
 
   if (!product) return notFound();
 
@@ -58,11 +62,7 @@ export async function generateMetadata(params: { permalink: string }) {
   };
 }
 
-export default async function ProductPage({
-  params: { permalink },
-}: {
-  params: { permalink: string };
-}) {
+export default async function ProductPage({ params: { permalink } }: Props) {
   const [product] = await getProduct(permalink);
 
   if (!product) return notFound();

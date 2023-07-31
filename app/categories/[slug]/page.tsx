@@ -9,6 +9,14 @@ type Props = {
     slug: string;
   };
 };
+
+export async function generateMetadata({ params: { slug } }: Props) {
+  return {
+    title: slug.toUpperCase(),
+    description: `${slug.toUpperCase()} Category at Fake fashion e-commerce store`,
+  }
+}
+
 export default function Category({ params: { slug } }: Props) {
   return (
     <div>

@@ -17,7 +17,6 @@ export async function wrapAsync<T>(
     const data = await promise;
     return [data, undefined];
   } catch (err) {
-    console.error("wrapAsync err=", err);
     return [undefined, err];
   }
 }
