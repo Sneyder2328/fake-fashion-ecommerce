@@ -30,17 +30,14 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
         "group relative hover:cursor-pointer",
       )}
     >
-      <Link href={InternalLinks.CATEGORY(category.slug)}>
+      <Link href={InternalLinks.CATEGORY(category.slug)} className="relative">
         <Image
           className="h-full w-full object-cover"
           src={category.assets![0].url}
-          fill={true}
+          width={category.assets![0].image_dimensions.width}
+          height={category.assets![0].image_dimensions.height}
           alt={category.name}
         />
-        {/* <img
-          src={}
-          className="h-full w-full object-cover"
-        /> */}
         <div className="duration-400 absolute left-0 top-0 h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-30" />
         <BannerText
           text={category.name}
