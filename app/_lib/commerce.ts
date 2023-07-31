@@ -1,4 +1,5 @@
 import CommerceSDK from "@chec/commerce.js";
+import { cache } from "react";
 
 if (!process.env.NEXT_PUBLIC_CHEC_PUBLIC_API_KEY) {
   throw new Error(
@@ -16,6 +17,35 @@ export async function wrapAsync<T>(
     const data = await promise;
     return [data, undefined];
   } catch (err) {
+    console.error("wrapAsync err=", err);
     return [undefined, err];
   }
 }
+
+export const getCategories = cache(async (limit: number) => {
+  return wrapAsync(
+    client.categories.list({
+      limit,
+    }),
+  );
+});
+
+export const getProduct = cache(async (permalink: string) => {
+  return wrapAsync(
+    client.products.retrieve(permalink, {
+      type: "permalink",
+    }),
+  );
+});
+
+export const getVariants = cache(async (productId: string) => {
+  return wrapAsync(client.products.getVariants(productId));
+});
+
+export const getProductsByCategory = cache(async (categorySlug: string) => {
+  return wrapAsync(
+    client.products.list({
+      category_slug: categorySlug.toLowerCase(),
+    }),
+  );
+});

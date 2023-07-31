@@ -38,6 +38,7 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
           src={category.assets[0].url}
           width={category.assets[0].image_dimensions.width}
           height={category.assets[0].image_dimensions.height}
+          priority
           alt={category.name}
         />
         <div className="duration-400 absolute left-0 top-0 h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-30" />

@@ -1,9 +1,12 @@
 import { SectionHeader } from "@/app/layout/section-header";
 import { ProductMain } from "@/app/products/[permalink]/_components/main";
 import { RelatedProducts } from "@/app/products/[permalink]/_components/grid/related-products";
-import commerce, { wrapAsync } from "@/app/_lib/commerce";
+import commerce, {
+  getProduct,
+  getVariants,
+  wrapAsync,
+} from "@/app/_lib/commerce";
 import { InternalLinks, VariantGroups } from "@/app/_lib/constants";
-import { Product } from "@chec/commerce.js/types/product";
 import {
   ProductVariantGroup,
   ProductVariantOption,
@@ -22,23 +25,52 @@ export type OptionPlusVariants = ProductVariantOption & {
   variants: Record<string, Variant>;
 };
 
+export async function generateMetadata(params: { permalink: string }) {
+  const [product] = await getProduct(params.permalink);
+
+  if (!product) return notFound();
+
+  const hide = true; // hide to crawlers as this is a fake store
+
+  return {
+    title: product.seo.title || product.name,
+    description: product.seo.description || product.description,
+    robots: {
+      index: hide,
+      follow: hide,
+      googleBot: {
+        index: hide,
+        follow: hide,
+      },
+    },
+    openGraph: product.image
+      ? {
+          images: [
+            {
+              url: product.image.url,
+              width: product.image.image_dimensions.width,
+              height: product.image.image_dimensions.height,
+              alt: product.name,
+            },
+          ],
+        }
+      : null,
+  };
+}
+
 export default async function ProductPage({
-  params,
+  params: { permalink },
 }: {
   params: { permalink: string };
 }) {
-  const { permalink } = params;
-  const [product] = await wrapAsync(
-    commerce.products.retrieve(permalink, {
-      type: "permalink",
-    }),
-  );
+  const [product] = await getProduct(permalink);
+
   if (!product) return notFound();
 
-  const [dataVariants] = await wrapAsync(
-    commerce.products.getVariants(product.id),
-  );
+  const [dataVariants] = await getVariants(product.id);
+
   if (!dataVariants || !dataVariants.data) return notFound();
+
   const variants: Variant[] = dataVariants.data;
 
   const {

@@ -70,6 +70,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
                   src={url}
                   className="w-full select-none"
                   alt={id}
+                  priority
                   width={width}
                   height={height}
                 />
