@@ -3,6 +3,7 @@ import { InternalLinks } from "@/app/_lib/constants";
 import Link from "next/link";
 import { Category } from "@chec/commerce.js/types/category";
 import { Asset } from "@chec/commerce.js/types/asset";
+import Image from "next/image";
 
 function BannerText({ text, className }: { text: string; className?: string }) {
   return (
@@ -30,10 +31,11 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
       )}
     >
       <Link href={InternalLinks.CATEGORY(category.slug)}>
-        <img
-          src={category.assets?.[0].url}
+        <Image src={category.assets![0].url} fill={true} alt={category.name} />
+        {/* <img
+          src={}
           className="h-full w-full object-cover"
-        />
+        /> */}
         <div className="duration-400 absolute left-0 top-0 h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-30" />
         <BannerText
           text={category.name}

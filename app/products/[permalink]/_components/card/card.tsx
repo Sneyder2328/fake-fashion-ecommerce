@@ -22,14 +22,10 @@ export function ProductCard({
     <Link href={`/products/${permalink}`}>
       <div className={twMerge("w-full", className)}>
         <div className="relative">
-          {/* <img className="w-full" src={image?.url} alt={name} /> */}
           <Image
             className="w-full"
-            // src={"https://cdn.chec.io/merchants/53309/assets/UKY07O8WzscwXx0W|1689886610995.jpg"}
-            // src={"https://cdn.chec.io/merchants/19303/assets/9yI6YD9osPkZqmXC_Kitchen-Sink-Journal-1.jpg"}
             src={image!.url}
             alt={name}
-            // layout="fill"
             width={1333}
             height={2000}
           />
