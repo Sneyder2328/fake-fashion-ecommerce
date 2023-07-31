@@ -6,6 +6,9 @@ import { Ratings } from "./ratings";
 async function getReviews(permalink: string): Promise<DetailsReviews> {
   const data = await fetch(
     process.env.NEXT_PUBLIC_API_URL + `/products/${permalink}/reviews`,
+    {
+      next: { revalidate: 60 },
+    },
   );
   return data.json();
 }
