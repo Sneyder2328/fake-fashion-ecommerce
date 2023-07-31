@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { ProductGallery } from "./gallery";
 import { ProductVariantOption } from "@chec/commerce.js/types/product-variant-group";
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { AddToCart } from "./add-to-cart";
 import { Asset } from "@chec/commerce.js/types/asset";
 import { OptionPlusVariants } from "@/app/products/[permalink]/page";
@@ -33,7 +33,7 @@ type Props = {
   colorOptions: ProductVariantOption[] | undefined;
   sizeOptions: ProductVariantOption[] | undefined;
   variantsIndexedByColor: Record<string, OptionPlusVariants> | undefined;
-  Reviews: any;
+  Reviews: React.ReactNode;
 };
 
 export function ProductMain({
