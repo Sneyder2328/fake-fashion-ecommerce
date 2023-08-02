@@ -1,11 +1,7 @@
 import { SectionHeader } from "@/app/layout/section-header";
 import { ProductMain } from "@/app/products/[permalink]/_components/main";
 import { RelatedProducts } from "@/app/products/[permalink]/_components/grid/related-products";
-import commerce, {
-  getProduct,
-  getVariants,
-  wrapAsync,
-} from "@/app/_lib/commerce";
+import { getProduct, getVariants } from "@/app/_lib/commerce";
 import { InternalLinks, VariantGroups } from "@/app/_lib/constants";
 import {
   ProductVariantGroup,
