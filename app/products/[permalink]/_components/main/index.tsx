@@ -10,6 +10,8 @@ import { OptionPlusVariants } from "@/app/products/[permalink]/page";
 import { Variant } from "@chec/commerce.js/types/variant";
 import { ColorPicker } from "./color-picker";
 import { SizePicker } from "./size-picker";
+import { commerce } from "@/app/_lib/commerce";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const createQueryString = (name: string, value: string) => {
   const params = new URLSearchParams(window.location.search);
@@ -21,7 +23,7 @@ export const replaceShallow = (key: string, value: string) =>
   history.replaceState(
     null,
     "",
-    window.location.pathname + "?" + createQueryString(key, value)
+    window.location.pathname + "?" + createQueryString(key, value),
   );
 
 export type ColorImage = {
@@ -30,6 +32,7 @@ export type ColorImage = {
 }[];
 
 type Props = {
+  productId: string;
   colorOptions: ProductVariantOption[] | undefined;
   sizeOptions: ProductVariantOption[] | undefined;
   variantsIndexedByColor: Record<string, OptionPlusVariants> | undefined;
@@ -37,6 +40,7 @@ type Props = {
 };
 
 export function ProductMain({
+  productId,
   colorOptions,
   sizeOptions,
   variantsIndexedByColor,
@@ -49,8 +53,8 @@ export function ProductMain({
   >(
     colorOptions?.find(
       (opt) =>
-        opt.name.toLowerCase() === searchParams?.get("color")?.toLowerCase()
-    ) ?? colorOptions?.[0]
+        opt.name.toLowerCase() === searchParams?.get("color")?.toLowerCase(),
+    ) ?? colorOptions?.[0],
   );
 
   const defaultImplicitSizeOption = sizeOptions?.[0] && {
@@ -63,13 +67,13 @@ export function ProductMain({
   >(
     sizeOptions?.find(
       (opt) =>
-        opt.name.toLowerCase() === searchParams?.get("size")?.toLowerCase()
-    ) ?? defaultImplicitSizeOption
+        opt.name.toLowerCase() === searchParams?.get("size")?.toLowerCase(),
+    ) ?? defaultImplicitSizeOption,
   );
 
   const getVariantByColorAndSize = (
     colorOption: ProductVariantOption | undefined,
-    sizeOption: ProductVariantOption | undefined
+    sizeOption: ProductVariantOption | undefined,
   ): Variant | undefined => {
     if (variantsIndexedByColor && colorOption?.id && sizeOption?.id)
       return variantsIndexedByColor?.[colorOption.id]?.variants?.[
@@ -78,11 +82,11 @@ export function ProductMain({
   };
 
   const getVariantByColor = (
-    colorOption: ProductVariantOption | undefined
+    colorOption: ProductVariantOption | undefined,
   ): Variant | undefined => {
     if (variantsIndexedByColor && colorOption?.id)
       return Object.values(
-        variantsIndexedByColor[colorOption.id].variants
+        variantsIndexedByColor[colorOption.id].variants,
       )?.[0];
   };
 
@@ -91,7 +95,7 @@ export function ProductMain({
     | undefined = useMemo(() => {
     const variant = getVariantByColorAndSize(
       colorOptionSelected,
-      sizeOptionSelected
+      sizeOptionSelected,
     );
     if (!variant) {
       return getVariantByColor(colorOptionSelected);
@@ -108,17 +112,41 @@ export function ProductMain({
         image: variant?.assets?.[0],
         colorOption,
       };
-    }
+    },
   );
 
+  const queryClient = useQueryClient();
+
+  const addToCardMutation = useMutation({
+    mutationFn: ({
+      productId,
+      variantSelectedId,
+    }: {
+      productId: string;
+      variantSelectedId: string;
+    }) => commerce.cart.add(productId, 1, variantSelectedId),
+    onSuccess: () => {
+      console.log("hehehe agregado");
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+    },
+  });
+
+  const onAddToCart = () => {
+    console.log("clicked");
+    addToCardMutation.mutate({
+      productId,
+      variantSelectedId: variantSelected?.id ?? "",
+    });
+  };
+
   return (
-    <div className="inner pt-6 flex flex-col md:flex-row space-y-6 md:space-y-0 pb-6">
-      <div className="w-11/12 mx-auto md:w-1/2">
+    <div className="inner flex flex-col space-y-6 pb-6 pt-6 md:flex-row md:space-y-0">
+      <div className="mx-auto w-11/12 md:w-1/2">
         {!!variantSelected?.assets && (
           <ProductGallery images={variantSelected.assets} />
         )}
       </div>
-      <div className="w-11/12 md:w-1/2 relative pl-5">
+      <div className="relative w-11/12 pl-5 md:w-1/2">
         <div className="flex flex-col">
           {!!colorImages && (
             <ColorPicker
@@ -142,9 +170,8 @@ export function ProductMain({
             />
           )}
           <AddToCart
-            onClick={() => {
-              console.log("clicked");
-            }}
+            isLoading={addToCardMutation.isLoading}
+            onClick={onAddToCart}
             price={variantSelected?.price?.formatted_with_symbol}
             isAvailable={variantSelected?.isVariantAvailable}
           />

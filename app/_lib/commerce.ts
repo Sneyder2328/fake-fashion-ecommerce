@@ -6,9 +6,8 @@ if (!process.env.NEXT_PUBLIC_CHEC_PUBLIC_API_KEY) {
     "Missing NEXT_PUBLIC_CHEC_PUBLIC_API_KEY environment variable",
   );
 }
-const client = new CommerceSDK(process.env.NEXT_PUBLIC_CHEC_PUBLIC_API_KEY!);
 
-export default client;
+export const commerce = new CommerceSDK(process.env.NEXT_PUBLIC_CHEC_PUBLIC_API_KEY!);
 
 export async function wrapAsync<T>(
   promise: Promise<T>,
@@ -23,7 +22,7 @@ export async function wrapAsync<T>(
 
 export const getCategories = cache(async (limit: number) => {
   return wrapAsync(
-    client.categories.list({
+    commerce.categories.list({
       limit,
     }),
   );
@@ -31,19 +30,19 @@ export const getCategories = cache(async (limit: number) => {
 
 export const getProduct = cache(async (permalink: string) => {
   return wrapAsync(
-    client.products.retrieve(permalink, {
+    commerce.products.retrieve(permalink, {
       type: "permalink",
     }),
   );
 });
 
 export const getVariants = cache(async (productId: string) => {
-  return wrapAsync(client.products.getVariants(productId));
+  return wrapAsync(commerce.products.getVariants(productId));
 });
 
 export const getProductsByCategory = cache(async (categorySlug: string) => {
   return wrapAsync(
-    client.products.list({
+    commerce.products.list({
       category_slug: categorySlug.toLowerCase(),
     }),
   );

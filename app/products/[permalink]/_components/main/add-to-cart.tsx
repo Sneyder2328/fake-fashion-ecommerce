@@ -1,11 +1,15 @@
+import { LoadingSpinner } from "@/app/_components/loading-spinner";
 import classNames from "classnames";
 
 type Props = {
   price?: string;
+  isLoading?: boolean;
   isAvailable?: boolean;
   onClick: React.MouseEventHandler;
 };
-export function AddToCart({ price, isAvailable, onClick }: Props) {
+export function AddToCart({ price, isAvailable, isLoading, onClick }: Props) {
+  const textBtn = isAvailable === true ? "Add to cart" : "Sold out";
+
   return (
     <div className="my-6 flex items-center space-x-4 border-b border-t border-solid border-gray-200 py-4">
       <span className="text-base font-bold">
@@ -24,7 +28,8 @@ export function AddToCart({ price, isAvailable, onClick }: Props) {
           },
         )}
       >
-        {isAvailable === true ? "Add to cart" : "Sold out"}
+        {isLoading === false && textBtn}
+        {isLoading === true && <LoadingSpinner size={16} />}
       </button>
     </div>
   );

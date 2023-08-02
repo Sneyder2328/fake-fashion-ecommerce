@@ -1,4 +1,4 @@
-const LoadingSpinner = (props: { size?: number }) => {
+export const LoadingSpinner = (props: { size?: number }) => {
   return (
     <div role="status">
       <svg
@@ -19,17 +19,6 @@ const LoadingSpinner = (props: { size?: number }) => {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">Loading...</span>
     </div>
   );
 };
-
-export default function LoadingPage() {
-  return (
-    <div className="w-full h-full">
-      <div className="absolute top-0 right-0 w-full h-full flex items-center justify-center">
-        <LoadingSpinner size={60} />
-      </div>
-    </div>
-  );
-}

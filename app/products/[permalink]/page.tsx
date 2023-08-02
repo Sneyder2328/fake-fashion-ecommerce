@@ -37,7 +37,9 @@ export async function generateMetadata({ params: { permalink } }: Props) {
   const hide = true; // hide to crawlers as this is a fake store
 
   return {
-    title: product.seo.title || product.name,
+    title: `${
+      product.seo.title || product.name
+    } | MiSto - Fake fashion e-commerce store`,
     description: product.seo.description || product.description,
     robots: {
       index: hide,
@@ -122,6 +124,7 @@ export default async function ProductPage({ params: { permalink } }: Props) {
         ]}
       />
       <ProductMain
+        productId={product.id}
         colorOptions={colorVariants?.options}
         sizeOptions={sizeVariants?.options}
         variantsIndexedByColor={variantsIndexedByColor}

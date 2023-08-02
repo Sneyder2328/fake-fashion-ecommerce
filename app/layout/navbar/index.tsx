@@ -1,11 +1,6 @@
 import { InternalLinks } from "@/app/_lib/constants";
-import {
-  MagnifyingGlassIcon,
-  GlobeAmericasIcon,
-  UserIcon,
-  ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { NavActions } from "./nav-actions";
 
 function Item({ name, url }: { name: string; url: string }) {
   return (
@@ -33,12 +28,7 @@ export default function Navbar() {
           <Item name="Blog" url={"/"} />
           <Item name="Contact" url={"/"} />
         </ul>
-        <div className="flex space-x-4">
-          <MagnifyingGlassIcon className="w-5" />
-          <GlobeAmericasIcon className="w-5" />
-          <UserIcon className="w-5" />
-          <ShoppingBagIcon className="w-5" />
-        </div>
+        <NavActions />
       </div>
     </div>
   );

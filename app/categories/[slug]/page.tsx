@@ -12,7 +12,7 @@ type Props = {
 
 export async function generateMetadata({ params: { slug } }: Props) {
   return {
-    title: slug.toUpperCase(),
+    title: `${slug.toUpperCase()} | MiSto - Fake fashion e-commerce store`,
     description: `${slug.toUpperCase()} Category at Fake fashion e-commerce store`,
   }
 }
