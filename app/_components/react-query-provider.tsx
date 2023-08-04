@@ -9,7 +9,7 @@ interface Props {
 
 const queryClient = new QueryClient();
 
-const QueryWrapper = ({ children }: Props) => {
+export const ReactQueryProvider = ({ children }: Props) => {
   return (
     <QueryClientProvider client={queryClient}>
       {/* <Toaster /> */}
@@ -17,9 +17,3 @@ const QueryWrapper = ({ children }: Props) => {
     </QueryClientProvider>
   );
 };
-
-export default QueryWrapper;
-
-function addToCart(){
-    
-}

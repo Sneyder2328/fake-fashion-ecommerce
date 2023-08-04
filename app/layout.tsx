@@ -5,7 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Navbar from "@/app/layout/navbar";
 import { Footer } from "@/app/layout/footer";
 import { gelasio, nunito_sans } from "./_lib/fonts";
-import QueryWrapper from "./_components/query-wrapper";
+import { ReactQueryProvider } from "./_components/react-query-provider";
 
 export const metadata: Metadata = {
   title: "MiSto - Fake E-commerce Store",
@@ -23,11 +23,11 @@ export default function RootLayout({
       <body
         className={`${nunito_sans.variable} ${gelasio.variable} flex flex-col`}
       >
-        <QueryWrapper>
+        <ReactQueryProvider>
           <Navbar />
           {children}
           <Footer />
-        </QueryWrapper>
+        </ReactQueryProvider>
       </body>
     </html>
   );

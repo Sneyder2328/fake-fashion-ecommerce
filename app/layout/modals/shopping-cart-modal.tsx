@@ -2,7 +2,7 @@ import { Modal } from "./base-modal";
 import { commerce } from "./../../_lib/commerce";
 import { LineItem } from "@chec/commerce.js/types/line-item";
 import { TrashIcon } from "@heroicons/react/24/outline";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { LoadingSpinner } from "@/app/_components/loading-spinner";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
@@ -93,21 +93,25 @@ type Props = {
   setIsOpen: (isOpen: boolean) => void;
 };
 export function ShoppingCartModal({ isOpen, setIsOpen }: Props) {
+  const queryClient = useQueryClient();
+
   const removeItemMutation = useMutation({
     mutationFn: ({ lineId }: { lineId: string }) =>
       commerce.cart.remove(lineId),
     onSuccess: (removeResponse) => {
       console.log("removeResponse=", removeResponse);
-      cartQuery.refetch();
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
   });
+
   const updateItemMutation = useMutation({
     mutationFn: ({ lineId, cart }: { lineId: string; cart: object }) =>
       commerce.cart.update(lineId, cart),
     onSuccess: () => {
-      cartQuery.refetch();
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
   });
+  
   const cartQuery = useQuery({
     queryKey: ["cart"],
     queryFn: () => commerce.cart.retrieve(),
