@@ -1,12 +1,14 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Select from "react-select";
 import { Modal } from "../base-modal";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { commerce } from "@/app/_lib/commerce";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Scrollbar } from "react-scrollbars-custom";
 import { SearchItem } from "./search-item";
 import { SearchItemSkeleton } from "./search-item-skeleton";
+import { useInView } from "react-intersection-observer";
+import React from "react";
 
 const defaultAllCategories = {
   value: "all",
@@ -18,27 +20,33 @@ type Props = {
   setIsOpen: (isOpen: boolean) => void;
 };
 export function SearchModal({ isOpen, setIsOpen }: Props) {
-  const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] =
     useState(defaultAllCategories);
+
+  const [ref, inView, entry] = useInView();
 
   const categoriesQuery = useQuery({
     queryKey: ["categories"],
     queryFn: () => commerce.categories.list(),
   });
 
-  const productsQuery = useQuery({
-    queryKey: ["products", selectedCategory.value, query, page],
-    queryFn: () => {
+  const productsQuery = useInfiniteQuery({
+    queryKey: ["products", selectedCategory.value, query],
+    queryFn: ({ pageParam = 1 }) => {
       const params = {
         category_slug:
           selectedCategory.value === "all" ? undefined : selectedCategory.value,
         query: !!query ? query : undefined,
-        limit: 5,
-        page,
+        limit: 8,
+        page: pageParam,
       };
       return commerce.products.list(params);
+    },
+    getNextPageParam: (lastPage) => {
+      const totalPages = lastPage.meta.pagination.total_pages;
+      const currentPage = lastPage.meta.pagination.current_page;
+      return currentPage < totalPages ? currentPage + 1 : undefined;
     },
   });
 
@@ -51,6 +59,13 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
     categories && items.push(...categories);
     return items;
   }, [categoriesQuery.data?.data]);
+
+  useEffect(() => {
+    if (inView && productsQuery.hasNextPage && !productsQuery.isFetching) {
+      console.log("productsQuery.fetchNextPage();");
+      productsQuery.fetchNextPage();
+    }
+  }, [inView, productsQuery.isFetching]);
 
   return (
     <Modal title="Search" onHide={() => setIsOpen(false)} isOpen={isOpen}>
@@ -91,14 +106,18 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
         >
           <div className="space-y-4">
             {productsQuery.isFetching && <SearchItemSkeleton count={3} />}
-            {!productsQuery.isFetching &&
-              productsQuery.data?.data?.map((product) => (
-                <SearchItem
-                  key={product.id}
-                  product={product}
-                  onHide={() => setIsOpen(false)}
-                />
-              ))}
+            {productsQuery.data?.pages.map((page, i) => (
+              <React.Fragment key={i}>
+                {page.data?.map((product) => (
+                  <SearchItem
+                    key={product.id}
+                    product={product}
+                    onHide={() => setIsOpen(false)}
+                  />
+                ))}
+              </React.Fragment>
+            ))}
+            <div ref={ref} className="h-[1px]"></div>
           </div>
         </Scrollbar>
       </div>
