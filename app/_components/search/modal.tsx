@@ -90,10 +90,15 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
           }}
         >
           <div className="space-y-4">
-            {productsQuery.isFetching && <SearchItemSkeleton count={3}/>}
-            {!productsQuery.isFetching && productsQuery.data?.data?.map((product) => (
-              <SearchItem key={product.id} product={product} />
-            ))}
+            {productsQuery.isFetching && <SearchItemSkeleton count={3} />}
+            {!productsQuery.isFetching &&
+              productsQuery.data?.data?.map((product) => (
+                <SearchItem
+                  key={product.id}
+                  product={product}
+                  onHide={() => setIsOpen(false)}
+                />
+              ))}
           </div>
         </Scrollbar>
       </div>
