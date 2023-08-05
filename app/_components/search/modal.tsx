@@ -9,6 +9,8 @@ import { SearchItem } from "./search-item";
 import { SearchItemSkeleton } from "./search-item-skeleton";
 import { useInView } from "react-intersection-observer";
 import React from "react";
+import { LoadingSpinner } from "../loading-spinner";
+import { trackYStyle } from "@/app/_lib/styles";
 
 const defaultAllCategories = {
   value: "all",
@@ -24,7 +26,7 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
   const [selectedCategory, setSelectedCategory] =
     useState(defaultAllCategories);
 
-  const [ref, inView, entry] = useInView();
+  const [ref, inView] = useInView();
 
   const categoriesQuery = useQuery({
     queryKey: ["categories"],
@@ -32,7 +34,7 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
   });
 
   const productsQuery = useInfiniteQuery({
-    queryKey: ["products", selectedCategory.value, query],
+    queryKey: ["search-products", selectedCategory.value, query],
     queryFn: ({ pageParam = 1 }) => {
       const params = {
         category_slug:
@@ -62,10 +64,9 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
 
   useEffect(() => {
     if (inView && productsQuery.hasNextPage && !productsQuery.isFetching) {
-      console.log("productsQuery.fetchNextPage();");
       productsQuery.fetchNextPage();
     }
-  }, [inView, productsQuery.isFetching]);
+  }, [inView, productsQuery.hasNextPage, productsQuery.isFetching]);
 
   return (
     <Modal title="Search" onHide={() => setIsOpen(false)} isOpen={isOpen}>
@@ -97,12 +98,7 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
             marginTop: "1.5rem",
           }}
           noScrollX={true}
-          trackYProps={{
-            style: {
-              width: 7,
-              top: 0,
-            },
-          }}
+          trackYProps={{ style: trackYStyle }}
         >
           <div className="space-y-4">
             {productsQuery.isFetching && <SearchItemSkeleton count={3} />}
@@ -117,7 +113,11 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
                 ))}
               </React.Fragment>
             ))}
-            <div ref={ref} className="h-[1px]"></div>
+            {productsQuery.hasNextPage && (
+              <div ref={ref} className="flex justify-center">
+                <LoadingSpinner size={24} />
+              </div>
+            )}
           </div>
         </Scrollbar>
       </div>

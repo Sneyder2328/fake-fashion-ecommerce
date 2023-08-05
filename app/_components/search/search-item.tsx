@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Product } from "@chec/commerce.js/types/product";
 
 import { InternalLinks } from "@/app/_lib/constants";
+import { ImageWrapper } from "../image-wrapper";
 
 export function SearchItem({
   product,
@@ -13,12 +13,16 @@ export function SearchItem({
 }) {
   return (
     <div className="flex">
-      <Link href={InternalLinks.PRODUCT(product.permalink)} onClick={onHide} className="flex">
+      <Link
+        href={InternalLinks.PRODUCT(product.permalink)}
+        onClick={onHide}
+        className="flex"
+      >
         {!!product.image?.url && (
-          <Image
+          <ImageWrapper
             src={product.image.url}
             alt={product.name}
-            className="w-16"
+            className="w-16 shrink-0"
             width={product.image.image_dimensions.width}
             height={product.image.image_dimensions.height}
           />

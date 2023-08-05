@@ -40,10 +40,11 @@ export const getVariants = cache(async (productId: string) => {
   return wrapAsync(commerce.products.getVariants(productId));
 });
 
-export const getProductsByCategory = cache(async (categorySlug: string) => {
+export const getProductsByCategory = cache(async (categorySlug: string, limit: number) => {
   return wrapAsync(
     commerce.products.list({
       category_slug: categorySlug.toLowerCase(),
+      limit
     }),
   );
 });

@@ -1,7 +1,7 @@
 import { ProductVariantOption } from "@chec/commerce.js/types/product-variant-group";
 import { ColorImage, replaceShallow } from ".";
 import classNames from "classnames";
-import Image from "next/image";
+import { ImageWrapper } from "@/app/_components/image-wrapper";
 
 type ColorPickerProps = {
   colorOptionSelected: ProductVariantOption | undefined;
@@ -28,7 +28,7 @@ export function ColorPicker({
         {colorImages
           .filter(({ image }) => !!image)
           .map(({ image, colorOption }) => (
-            <Image
+            <ImageWrapper
               className={classNames(
                 "ml-2 mt-2 w-10 border-2 border-solid hover:cursor-pointer",
                 {

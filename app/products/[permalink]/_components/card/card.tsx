@@ -1,5 +1,5 @@
+import { ImageWrapper } from "@/app/_components/image-wrapper";
 import { Product } from "@chec/commerce.js/types/product";
-import Image from "next/image";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
@@ -23,7 +23,7 @@ export function ProductCard({
       <div className={twMerge("w-full", className)}>
         <div className="relative">
           {!!image && (
-            <Image
+            <ImageWrapper
               className="w-full"
               src={image.url}
               alt={name}

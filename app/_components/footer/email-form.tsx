@@ -8,7 +8,7 @@ export function EmailForm() {
   return (
     <div className="bg-secondary py-6 lg:py-2">
       <div className="inner flex flex-col items-center justify-between space-y-4 lg:flex-row lg:space-y-0">
-        <span className="font-light uppercase text-white">
+        <span className="shrink-0 font-light uppercase text-white">
           Be in touch with us:
         </span>
         <form className="flex grow flex-col justify-center space-y-4 lg:w-1/3 lg:flex-row lg:items-center lg:space-x-4 lg:space-y-0">
@@ -21,7 +21,7 @@ export function EmailForm() {
             JOIN US
           </button>
         </form>
-        <div className="flex space-x-2">
+        <div className="flex shrink-0 space-x-2">
           <Image
             src={FbIcon}
             alt="follow us on facebook"

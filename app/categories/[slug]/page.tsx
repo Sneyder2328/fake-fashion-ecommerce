@@ -31,8 +31,8 @@ export default function Category({ params: { slug } }: Props) {
           },
         ]}
       />
-      <div className="inner">
-        <Suspense fallback={<ProductGridItemsSkeleton />}>
+      <div className="inner py-6">
+        <Suspense fallback={<ProductGridItemsSkeleton count={8}/>}>
           <MainCategory slug={slug} />
         </Suspense>
       </div>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ImageWrapper } from "@/app/_components/image-wrapper";
 import Link from "next/link";
 import React from "react";
 
@@ -11,7 +11,7 @@ type CardProps = {
 function Card({ image, title, description }: CardProps) {
   return (
     <div className="relative flex flex-col items-center">
-      <Image
+      <ImageWrapper
         src={image}
         alt={title}
         className="h-48 w-full object-cover"

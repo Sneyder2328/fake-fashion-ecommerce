@@ -7,7 +7,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import { Fade, SlideshowRef } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { ImageIndicators } from "./image-indicators";
-import Image from "next/image";
+import { ImageWrapper } from "@/app/_components/image-wrapper";
 
 export type ProductGalleryProps = {
   images: {
@@ -66,7 +66,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
           {images.map(({ id, url, image_dimensions: { width, height } }) => (
             <div key={id} className="pl-[1px] pr-[1px]">
               <Zoom>
-                <Image
+                <ImageWrapper
                   src={url}
                   className="w-full select-none"
                   alt={id}

@@ -11,7 +11,7 @@ export async function HomeCategory({
   slug: string;
   className?: string;
 }) {
-  const [products] = await getProductsByCategory(slug);
+  const [products] = await getProductsByCategory(slug, 8);
 
   if (!products || !products.data) return null;
 

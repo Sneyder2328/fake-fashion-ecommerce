@@ -3,7 +3,7 @@ import { InternalLinks } from "@/app/_lib/constants";
 import Link from "next/link";
 import { Category } from "@chec/commerce.js/types/category";
 import { Asset } from "@chec/commerce.js/types/asset";
-import Image from "next/image";
+import { ImageWrapper } from "@/app/_components/image-wrapper";
 
 function BannerText({ text, className }: { text: string; className?: string }) {
   return (
@@ -33,7 +33,7 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
       )}
     >
       <Link href={InternalLinks.CATEGORY(category.slug)} className="relative">
-        <Image
+        <ImageWrapper
           className="h-full w-full object-cover"
           src={category.assets[0].url}
           width={category.assets[0].image_dimensions.width}

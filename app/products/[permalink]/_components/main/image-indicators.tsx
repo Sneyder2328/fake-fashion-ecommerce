@@ -1,7 +1,8 @@
 import classNames from "classnames";
 import { Scrollbar } from "react-scrollbars-custom";
 import { ProductGalleryProps } from "./gallery";
-import Image from "next/image";
+import { trackYStyle } from "@/app/_lib/styles";
+import { ImageWrapper } from "@/app/_components/image-wrapper";
 
 type ImageIndicatorsProps = {
   indexSlide: number;
@@ -18,15 +19,10 @@ export function ImageIndicators({
       <Scrollbar
         style={{ width: 80, height: "100%" }}
         noScrollX={true}
-        trackYProps={{
-          style: {
-            width: 7,
-            top: 0,
-          },
-        }}
+        trackYProps={{ style: trackYStyle }}
       >
         {images.map(({ id, url, image_dimensions }, i) => (
-          <Image
+          <ImageWrapper
             key={id}
             src={url}
             width={image_dimensions.width}
