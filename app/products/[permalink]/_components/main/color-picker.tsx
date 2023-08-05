@@ -48,6 +48,7 @@ export function ColorPicker({
               src={image!.url}
               width={image!.image_dimensions.width}
               height={image!.image_dimensions.height}
+              minifyFactor={0.2}
               key={image!.id}
               onClick={() => {
                 setColorOptionSelected(colorOption);

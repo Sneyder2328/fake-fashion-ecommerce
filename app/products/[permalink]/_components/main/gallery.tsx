@@ -69,6 +69,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
                 <ImageWrapper
                   src={url}
                   className="w-full select-none"
+                  minifyDimensions={false}
                   alt={id}
                   priority
                   width={width}

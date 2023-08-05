@@ -21,6 +21,7 @@ export function CartItem({
           src={item.image.url}
           alt={item.name}
           className="w-16 shrink-0"
+          minifyFactor={0.3}
           width={item.image.image_dimensions.width}
           height={item.image.image_dimensions.height}
         />

@@ -23,6 +23,7 @@ export function SearchItem({
             src={product.image.url}
             alt={product.name}
             className="w-16 shrink-0"
+            minifyFactor={0.3}
             width={product.image.image_dimensions.width}
             height={product.image.image_dimensions.height}
           />

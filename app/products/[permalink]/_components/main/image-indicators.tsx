@@ -27,6 +27,7 @@ export function ImageIndicators({
             src={url}
             width={image_dimensions.width}
             height={image_dimensions.height}
+            minifyFactor={0.2}
             alt={id}
             className={classNames(
               "mb-3 h-[105px] w-full border-2 border-solid hover:cursor-pointer",

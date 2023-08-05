@@ -14,6 +14,7 @@ function Card({ image, title, description }: CardProps) {
       <ImageWrapper
         src={image}
         alt={title}
+        minifyFactor={0.8}
         className="h-48 w-full object-cover"
         width={800}
         height={533}
