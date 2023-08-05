@@ -2,7 +2,6 @@
 
 import {
   MagnifyingGlassIcon,
-  GlobeAmericasIcon,
   UserIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
@@ -30,7 +29,6 @@ export function NavActions({}) {
           className="w-5 hover:cursor-pointer"
           onClick={() => setIsSearchOpen(true)}
         />
-        <GlobeAmericasIcon className="w-5" />
         <UserIcon
           className="w-5 hover:cursor-pointer"
           onClick={() => setIsAuthModalOpen(true)}
