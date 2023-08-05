@@ -14,11 +14,9 @@ export function CartItem({
   onRemove: () => void;
   item: LineItem;
 }) {
-  console.log("item=", item);
-
   return (
-    <Link href={InternalLinks.PRODUCT(item.permalink)}>
-      <div className="flex border-b-[2px] border-b-[#f8f8f8] pb-4">
+    <div className="flex border-b-[2px] border-b-[#f8f8f8] pb-4">
+      <Link href={InternalLinks.PRODUCT(item.permalink)} className="flex">
         {!!item.image?.url && (
           <Image
             src={item.image.url}
@@ -54,7 +52,7 @@ export function CartItem({
             />
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

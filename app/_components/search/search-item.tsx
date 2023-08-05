@@ -12,8 +12,8 @@ export function SearchItem({
   onHide: () => void;
 }) {
   return (
-    <Link href={InternalLinks.PRODUCT(product.permalink)} onClick={onHide}>
-      <div className="flex">
+    <div className="flex">
+      <Link href={InternalLinks.PRODUCT(product.permalink)} onClick={onHide} className="flex">
         {!!product.image?.url && (
           <Image
             src={product.image.url}
@@ -29,7 +29,7 @@ export function SearchItem({
             {product.price.formatted_with_symbol}
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
