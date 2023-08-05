@@ -1,5 +1,5 @@
 import { MainCategory } from "@/app/categories/[slug]/_components/main";
-import { SectionHeader } from "@/app/layout/section-header";
+import { SectionHeader } from "@/app/_components/section-header";
 import { ProductGridItemsSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-items";
 import { InternalLinks } from "@/app/_lib/constants";
 import { Suspense } from "react";

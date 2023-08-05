@@ -1,3 +1,4 @@
+import { Button } from "@/app/_components/button";
 import { LoadingSpinner } from "@/app/_components/loading-spinner";
 import classNames from "classnames";
 
@@ -15,11 +16,10 @@ export function AddToCart({ price, isAvailable, isLoading, onClick }: Props) {
       <span className="text-base font-bold">
         {isAvailable === true && !!price && price}
       </span>
-      <button
+      <Button
         disabled={isAvailable !== true}
         onClick={onClick}
         className={classNames(
-          "px-5 py-[10px] text-xs font-light uppercase text-white",
           {
             "bg-gray-600 hover:cursor-not-allowed": isAvailable !== true,
           },
@@ -30,7 +30,7 @@ export function AddToCart({ price, isAvailable, isLoading, onClick }: Props) {
       >
         {isLoading === false && textBtn}
         {isLoading === true && <LoadingSpinner size={16} />}
-      </button>
+      </Button>
     </div>
   );
 }

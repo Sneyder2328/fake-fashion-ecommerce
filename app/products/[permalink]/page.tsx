@@ -1,4 +1,4 @@
-import { SectionHeader } from "@/app/layout/section-header";
+import { SectionHeader } from "@/app/_components/section-header";
 import { ProductMain } from "@/app/products/[permalink]/_components/main";
 import { RelatedProducts } from "@/app/products/[permalink]/_components/grid/related-products";
 import { getProduct, getVariants } from "@/app/_lib/commerce";

@@ -7,12 +7,15 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { ShoppingCartModal } from "../modals/shopping-cart-modal";
 import { useQuery } from "@tanstack/react-query";
 import { commerce } from "@/app/_lib/commerce";
+import { ShoppingCartModal } from "@/app/_components/shopping-cart/modal";
+import { LoginModal } from "@/app/_components/login/modal";
+import { SearchModal } from "../search/modal";
 
 export function NavActions({}) {
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const cartQuery = useQuery({
@@ -23,9 +26,15 @@ export function NavActions({}) {
   return (
     <>
       <div className="flex space-x-4">
-        <MagnifyingGlassIcon className="w-5" />
+        <MagnifyingGlassIcon
+          className="w-5 hover:cursor-pointer"
+          onClick={() => setIsSearchOpen(true)}
+        />
         <GlobeAmericasIcon className="w-5" />
-        <UserIcon className="w-5" />
+        <UserIcon
+          className="w-5 hover:cursor-pointer"
+          onClick={() => setIsAuthModalOpen(true)}
+        />
         <div className="relative">
           <ShoppingBagIcon
             className="w-5 hover:cursor-pointer"
@@ -42,6 +51,8 @@ export function NavActions({}) {
         isOpen={isShoppingCartOpen}
         setIsOpen={setIsShoppingCartOpen}
       />
+      <LoginModal isOpen={isAuthModalOpen} setIsOpen={setIsAuthModalOpen} />
+      <SearchModal isOpen={isSearchOpen} setIsOpen={setIsSearchOpen} />
     </>
   );
 }

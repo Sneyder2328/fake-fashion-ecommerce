@@ -1,7 +1,7 @@
 "use client";
 
 import { ShareIcon } from "@heroicons/react/24/outline";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 function shareLink({ title, url }: { title: string; url: string }) {
   if (navigator.share) {
@@ -14,7 +14,9 @@ function shareLink({ title, url }: { title: string; url: string }) {
   if (navigator.clipboard) {
     navigator.clipboard
       .writeText(url)
-      .then(() => toast("Link copied into the clipboard!"))
+      .then(() =>
+        toast("Link copied into the clipboard!", { position: "top-right" }),
+      )
       .catch(console.error);
   }
 }
@@ -33,7 +35,6 @@ export function Share({
     >
       <ShareIcon className="w-3 text-gray-700" />
       <span className="text-sm font-semibold text-gray-500">Share</span>
-      <Toaster position="top-right" />
     </div>
   );
 }
