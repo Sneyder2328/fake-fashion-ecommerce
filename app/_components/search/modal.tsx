@@ -85,7 +85,11 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
       <div className="flex h-full flex-col">
         <Select
           options={options}
-          onChange={(newValue) => newValue && setSelectedCategory(newValue)}
+          onChange={(newValue) =>
+            newValue &&
+            typeof newValue === "object" && // @ts-ignore
+            setSelectedCategory(newValue)
+          }
           styles={colourStyles}
           value={selectedCategory}
         />
