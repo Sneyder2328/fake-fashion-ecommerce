@@ -6,7 +6,7 @@
 html,
 body {
   line-height: 1.6;
-  @apply m-0 h-full bg-main p-0 font-sans;
+  @apply m-0 h-full bg-primaryMain p-0 font-sans;
 }
 
 * {
