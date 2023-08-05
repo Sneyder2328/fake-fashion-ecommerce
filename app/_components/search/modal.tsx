@@ -101,7 +101,6 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
           trackYProps={{ style: trackYStyle }}
         >
           <div className="space-y-4">
-            {productsQuery.isFetching && <SearchItemSkeleton count={3} />}
             {productsQuery.data?.pages.map((page, i) => (
               <React.Fragment key={i}>
                 {page.data?.map((product) => (
@@ -114,8 +113,8 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
               </React.Fragment>
             ))}
             {productsQuery.hasNextPage && (
-              <div ref={ref} className="flex justify-center">
-                <LoadingSpinner size={24} />
+              <div ref={ref} className="space-y-4">
+                <SearchItemSkeleton count={3} />
               </div>
             )}
           </div>

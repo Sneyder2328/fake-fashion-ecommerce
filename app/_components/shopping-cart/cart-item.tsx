@@ -15,7 +15,7 @@ export function CartItem({
   item: LineItem;
 }) {
   return (
-    <div className="flex border-b-[2px] border-b-[#f8f8f8] pb-4">
+    <div className="flex border-b-[2px] border-b-[#f8f8f8] pb-4 pr-2">
       {!!item.image?.url && (
         <ImageWrapper
           src={item.image.url}

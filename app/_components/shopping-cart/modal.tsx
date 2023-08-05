@@ -5,6 +5,8 @@ import { CartItemSkeleton } from "./cart-item-skeleton";
 import { CartItem } from "./cart-item";
 import { Modal } from "../base-modal";
 import { Button } from "../button";
+import Scrollbar from "react-scrollbars-custom";
+import { trackYStyle } from "@/app/_lib/styles";
 
 type Props = {
   isOpen: boolean;
@@ -42,24 +44,28 @@ export function ShoppingCartModal({ isOpen, setIsOpen }: Props) {
       isOpen={isOpen}
     >
       <div className="flex h-full flex-col justify-between">
-        <div className="space-y-4">
-          {cartQuery.isFetching && <CartItemSkeleton />}
-          {!cartQuery.isFetching &&
-            cartQuery.data?.line_items.map((item) => (
-              <CartItem
-                key={item.id}
-                item={item}
-                onChangeQuantity={(quantity) =>
-                  updateItemMutation.mutate({
-                    lineId: item.id,
-                    cart: { quantity },
-                  })
-                }
-                onRemove={() => removeItemMutation.mutate({ lineId: item.id })}
-              />
-            ))}
-        </div>
-        <div>
+        <Scrollbar noScrollX={true} trackYProps={{ style: trackYStyle }}>
+          <div className="space-y-4">
+            {cartQuery.isFetching && <CartItemSkeleton />}
+            {!cartQuery.isFetching &&
+              cartQuery.data?.line_items.map((item) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  onChangeQuantity={(quantity) =>
+                    updateItemMutation.mutate({
+                      lineId: item.id,
+                      cart: { quantity },
+                    })
+                  }
+                  onRemove={() =>
+                    removeItemMutation.mutate({ lineId: item.id })
+                  }
+                />
+              ))}
+          </div>
+        </Scrollbar>
+        <div className="mt-6">
           <div className="flex justify-between">
             <span>Total</span>
             <span className="font-extrabold">
