@@ -20,8 +20,10 @@ function Card({ image, title, description }: CardProps) {
         height={533}
       />
       <div className="absolute top-3/4 w-10/12 bg-white p-4">
-        <h2 className="text-lg font-semibold uppercase">{title}</h2>
-        <p className="mt-2 text-sm font-semibold text-slate-500">
+        <h2 className="text-lg font-bold uppercase text-primaryMainText">
+          {title}
+        </h2>
+        <p className="mt-2 text-sm font-semibold text-primaryLightText">
           {description}
         </p>
       </div>
@@ -71,8 +73,13 @@ export function HomeBlog({ className }: { className?: string }) {
   return (
     <div className={className}>
       <div className="flex items-center justify-between">
-        <h4 className="text-xl font-semibold uppercase">Latest from blog</h4>
-        <Link href={"/"} className="text-sm font-bold uppercase text-gray-600">
+        <h4 className="text-xl font-extrabold uppercase text-primaryMainText">
+          Latest from blog
+        </h4>
+        <Link
+          href={"/"}
+          className="text-sm font-bold uppercase text-primaryLightText"
+        >
           See all
         </Link>
       </div>

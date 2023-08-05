@@ -34,7 +34,7 @@ export function Share({
       onClick={() => shareLink({ url: permalink, title: name })}
     >
       <ShareIcon className="w-3 text-gray-700" />
-      <span className="text-sm font-semibold text-gray-500">Share</span>
+      <span className="text-sm font-semibold text-primaryLightText">Share</span>
     </div>
   );
 }

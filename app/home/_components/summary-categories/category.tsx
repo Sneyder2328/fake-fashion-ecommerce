@@ -1,16 +1,16 @@
-import classNames from "classnames";
 import { InternalLinks } from "@/app/_lib/constants";
 import Link from "next/link";
 import { Category } from "@chec/commerce.js/types/category";
 import { Asset } from "@chec/commerce.js/types/asset";
 import { ImageWrapper } from "@/app/_components/image-wrapper";
+import { twMerge } from "tailwind-merge";
 
 function BannerText({ text, className }: { text: string; className?: string }) {
   return (
     <div
-      className={classNames(
+      className={twMerge(
+        "bg-primaryMain pb-1 pl-4 pr-4 pt-1 text-2xl font-bold uppercase text-primaryMainText",
         className,
-        "bg-white pb-1 pl-4 pr-4 pt-1 text-2xl font-bold uppercase",
       )}
     >
       {text}
@@ -27,9 +27,9 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
 
   return (
     <div
-      className={classNames(
-        category.className,
+      className={twMerge(
         "group relative hover:cursor-pointer",
+        category.className,
       )}
     >
       <Link href={InternalLinks.CATEGORY(category.slug)} className="relative">
@@ -38,10 +38,11 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
           src={category.assets[0].url}
           width={category.assets[0].image_dimensions.width}
           height={category.assets[0].image_dimensions.height}
+          minifyFactor={0.3}
           priority
           alt={category.name}
         />
-        <div className="duration-400 absolute left-0 top-0 h-full w-full bg-black opacity-0 transition-opacity group-hover:opacity-30" />
+        <div className="duration-400 absolute left-0 top-0 h-full w-full bg-secondaryMain opacity-0 transition-opacity group-hover:opacity-30" />
         <BannerText
           text={category.name}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded"

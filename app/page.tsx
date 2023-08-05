@@ -12,7 +12,7 @@ export default function Home() {
       <Suspense fallback={<GridCategoriesSkeleton />}>
         <SummaryCategories />
       </Suspense>
-      <HomeOfferings className="inner mt-8" />
+      <HomeOfferings className="inner mt-4" />
       <div className="mt-4 h-[1px] w-full shadow" />
       <HomeCategories />
       <FormOffer className="mt-14" />

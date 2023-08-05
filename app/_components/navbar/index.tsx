@@ -12,10 +12,10 @@ function Item({ name, url }: { name: string; url: string }) {
 
 export default function Navbar() {
   return (
-    <div className="flex h-14 w-full shrink-0 justify-center bg-white shadow">
+    <div className="flex h-14 w-full shrink-0 justify-center bg-primaryMain shadow">
       <div className="inner flex h-full items-center justify-between">
         <Link href={InternalLinks.HOME}>
-          <h1 className="font-serif text-2xl font-extrabold text-black">
+          <h1 className="font-serif text-2xl font-extrabold text-primaryMainText">
             MiSto
           </h1>
         </Link>

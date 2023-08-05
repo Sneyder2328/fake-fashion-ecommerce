@@ -14,7 +14,7 @@ type Props = {
 };
 export function SectionHeader({ title, items, permalink }: Props) {
   return (
-    <div className={classNames("w-full bg-[#f8f8f8]")}>
+    <div className={classNames("w-full bg-primaryContrast")}>
       <div className="inner py-4">
         <div className="flex justify-between">
           <ul className="flex items-center space-x-2">
@@ -24,7 +24,9 @@ export function SectionHeader({ title, items, permalink }: Props) {
                   href={item.url}
                   text={item.name}
                   className={
-                    index === items.length - 1 ? "text-black" : undefined
+                    index === items.length - 1
+                      ? "font-bold text-primaryMainText"
+                      : undefined
                   }
                 />
                 {index < items.length - 1 && <ItemsDivider />}
@@ -33,7 +35,9 @@ export function SectionHeader({ title, items, permalink }: Props) {
           </ul>
           <Share permalink={permalink} name={title} />
         </div>
-        <h2 className="mx-auto w-fit text-2xl font-bold text-black">{title}</h2>
+        <h2 className="mx-auto w-fit text-2xl font-bold text-primaryMainText">
+          {title}
+        </h2>
       </div>
     </div>
   );

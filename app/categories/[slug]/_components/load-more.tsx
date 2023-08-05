@@ -31,7 +31,7 @@ export function LoadMoreProducts({ categorySlug }: { categorySlug: string }) {
     if (inView && productsQuery.hasNextPage && !productsQuery.isFetching) {
       productsQuery.fetchNextPage();
     }
-  }, [inView, productsQuery]);
+  }, [inView, productsQuery.hasNextPage, productsQuery.isFetching]);
 
   return (
     <>

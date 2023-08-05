@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import Select from "react-select";
+import Select, { StylesConfig } from "react-select";
 import { Modal } from "../base-modal";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { commerce } from "@/app/_lib/commerce";
@@ -9,12 +9,24 @@ import { SearchItem } from "./search-item";
 import { SearchItemSkeleton } from "./search-item-skeleton";
 import { useInView } from "react-intersection-observer";
 import React from "react";
-import { LoadingSpinner } from "../loading-spinner";
 import { trackYStyle } from "@/app/_lib/styles";
+
+type CategoryOption = {
+  value: string;
+  label: string;
+};
 
 const defaultAllCategories = {
   value: "all",
   label: "All categories",
+} as CategoryOption;
+
+const colourStyles: StylesConfig<CategoryOption> = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "#f8f8f8",
+    border: "none",
+  }),
 };
 
 type Props = {
@@ -74,21 +86,23 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
         <Select
           options={options}
           onChange={(newValue) => newValue && setSelectedCategory(newValue)}
+          styles={colourStyles}
           value={selectedCategory}
-          placeholder=""
         />
-        <div className="mt-6 flex items-center justify-between bg-[#f8f8f8]">
+        <div className="mt-6 flex items-center justify-between bg-primaryContrast">
           <input
             type="text"
             placeholder="What are you looking for?"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="grow bg-[#f8f8f8] px-3 py-2 outline-none  placeholder:text-slate-400"
+            className="grow bg-primaryContrast px-3 py-2 outline-none  placeholder:text-slate-400"
           />
           <MagnifyingGlassIcon className="mr-4 h-6 w-6 text-slate-400" />
         </div>
         <div className="border-b-2 border-gray-300 pt-6"></div>
-        <span className="mt-6 font-bold uppercase">Need some inspiration?</span>
+        <span className="mt-6 font-bold uppercase text-primaryMainText">
+          Need some inspiration?
+        </span>
 
         <Scrollbar
           style={{
@@ -100,7 +114,7 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
           noScrollX={true}
           trackYProps={{ style: trackYStyle }}
         >
-          <div className="space-y-4">
+          <div>
             {productsQuery.data?.pages.map((page, i) => (
               <React.Fragment key={i}>
                 {page.data?.map((product) => (

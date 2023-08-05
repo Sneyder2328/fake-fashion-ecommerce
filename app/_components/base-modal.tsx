@@ -25,9 +25,9 @@ export function Modal({ isOpen, title, onHide, children }: Props) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="absolute right-0 flex h-screen w-full flex-col bg-white lg:max-w-md xl:max-w-[28rem]"
+        className="absolute right-0 flex h-screen w-full flex-col bg-primaryMain lg:max-w-md xl:max-w-[28rem]"
       >
-        <div className="flex h-12 shrink-0 items-center justify-between bg-black px-4 text-white">
+        <div className="flex h-12 shrink-0 items-center justify-between bg-secondaryMain px-4 text-secondaryContrast">
           <h3 className="uppercase leading-none">{title}</h3>
           <XMarkIcon
             className="h-6 w-6 cursor-pointer leading-none"

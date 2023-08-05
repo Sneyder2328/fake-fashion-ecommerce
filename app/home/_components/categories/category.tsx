@@ -33,7 +33,7 @@ export async function HomeCategory({
       <Link href={InternalLinks.CATEGORY(slug)}>
         <button
           className={
-            "w-full bg-gray-200 pb-2 pt-2 text-center text-sm font-medium uppercase text-gray-600 hover:bg-gray-300"
+            "w-full bg-primaryContrast pb-2 pt-2 text-center text-sm font-medium uppercase text-gray-600 hover:bg-gray-300 mt-6"
           }
         >
           See all

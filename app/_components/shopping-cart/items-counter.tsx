@@ -6,7 +6,7 @@ export function Counter({
   onChange: (value: number) => void;
 }) {
   return (
-    <div className="inline rounded bg-[#f8f8f8] py-1">
+    <div className="inline rounded bg-primaryContrast py-1">
       <button
         className="w-7 text-slate-500"
         onClick={() => onChange(value - 1)}

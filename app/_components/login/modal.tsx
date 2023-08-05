@@ -48,7 +48,7 @@ export function LoginModal({ isOpen, setIsOpen }: Props) {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-2 rounded-sm  border bg-[#f8f8f8] px-3 py-2 outline-none invalid:border-red-500 focus:border-slate-500"
+          className="mt-2 rounded-sm  border bg-primaryContrast px-3 py-2 outline-none invalid:border-red-500 focus:border-slate-500"
         />
         <label htmlFor="password" className="mt-4 font-bold uppercase">
           Password
@@ -59,7 +59,7 @@ export function LoginModal({ isOpen, setIsOpen }: Props) {
           minLength={8}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mt-2 rounded-sm  border bg-[#f8f8f8] px-3 py-2 outline-none invalid:border-red-500 focus:border-slate-500"
+          className="mt-2 rounded-sm  border bg-primaryContrast px-3 py-2 outline-none invalid:border-red-500 focus:border-slate-500"
         />
         <Button
           className="mt-6"

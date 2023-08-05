@@ -39,7 +39,7 @@ export function NavActions({}) {
             onClick={() => setIsShoppingCartOpen(true)}
           />
           {(cartQuery.data?.total_items ?? 0) > 0 && (
-            <i className="absolute -right-2 -top-1 flex h-[14px] w-[14px] items-center justify-center rounded-full bg-black text-[10px] not-italic text-white">
+            <i className="absolute -right-2 -top-1 flex h-[14px] w-[14px] items-center justify-center rounded-full bg-secondaryMain text-[10px] not-italic text-white">
               {cartQuery.data?.total_items}
             </i>
           )}

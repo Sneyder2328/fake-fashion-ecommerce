@@ -15,7 +15,7 @@ export function CartItem({
   item: LineItem;
 }) {
   return (
-    <div className="flex border-b-[2px] border-b-[#f8f8f8] pb-4 pr-2">
+    <div className="flex border-b-[2px] border-b-primaryContrast pb-4 pr-2">
       {!!item.image?.url && (
         <ImageWrapper
           src={item.image.url}
@@ -29,7 +29,9 @@ export function CartItem({
       <div className="ml-4 flex grow flex-col justify-between">
         <div className="flex flex-col">
           <Link href={InternalLinks.PRODUCT(item.permalink)}>
-            <span className="text-slate-500 hover:underline">{item.name}</span>
+            <span className="text-primaryLightText hover:underline">
+              {item.name}
+            </span>
           </Link>
           <span className="font-bold">
             {item.selected_options

@@ -33,7 +33,7 @@ export function ProductCard({
           )}
           <div className="duration-400 absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-black opacity-0 transition-opacity hover:opacity-20" />
         </div>
-        <span className="mt-3 block text-xs font-medium text-gray-500">
+        <span className="mt-3 block text-xs font-medium text-primaryLightText">
           {name}
         </span>
         <span className="mt-[2px] block text-sm font-extrabold">

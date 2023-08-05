@@ -16,7 +16,7 @@ export function SearchItem({
       <Link
         href={InternalLinks.PRODUCT(product.permalink)}
         onClick={onHide}
-        className="flex"
+        className="flex hover:bg-primaryContrast w-full py-2"
       >
         {!!product.image?.url && (
           <ImageWrapper
@@ -29,7 +29,9 @@ export function SearchItem({
           />
         )}
         <div className="ml-4 flex grow flex-col">
-          <span className="text-slate-500 hover:underline">{product.name}</span>
+          <span className="text-primaryLightText hover:underline">
+            {product.name}
+          </span>
           <span className="font-extrabold">
             {product.price.formatted_with_symbol}
           </span>
