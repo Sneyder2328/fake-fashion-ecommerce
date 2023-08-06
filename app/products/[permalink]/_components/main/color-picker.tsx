@@ -1,7 +1,8 @@
 import { ProductVariantOption } from "@chec/commerce.js/types/product-variant-group";
-import { ColorImage, replaceShallow } from ".";
+import { ColorImage } from ".";
 import classNames from "classnames";
 import { ImageWrapper } from "@/app/_components/image-wrapper";
+import { replaceShallow } from "@/app/_lib/utils";
 
 type ColorPickerProps = {
   colorOptionSelected: ProductVariantOption | undefined;

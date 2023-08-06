@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { ProductGallery } from "./gallery";
+import { ProductGallery } from "./product-gallery";
 import { ProductVariantOption } from "@chec/commerce.js/types/product-variant-group";
 import React, { useState, useMemo } from "react";
 import { AddToCart } from "./add-to-cart";
@@ -12,19 +12,6 @@ import { ColorPicker } from "./color-picker";
 import { SizePicker } from "./size-picker";
 import { commerce } from "@/app/_lib/commerce";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
-const createQueryString = (name: string, value: string) => {
-  const params = new URLSearchParams(window.location.search);
-  params.set(name, value);
-  return params.toString();
-};
-
-export const replaceShallow = (key: string, value: string) =>
-  history.replaceState(
-    null,
-    "",
-    window.location.pathname + "?" + createQueryString(key, value),
-  );
 
 export type ColorImage = {
   colorOption: ProductVariantOption;
@@ -126,13 +113,11 @@ export function ProductMain({
       variantSelectedId: string;
     }) => commerce.cart.add(productId, 1, variantSelectedId),
     onSuccess: () => {
-      console.log("hehehe agregado");
       queryClient.invalidateQueries({ queryKey: ["cart"] });
     },
   });
 
   const onAddToCart = () => {
-    console.log("clicked");
     addToCardMutation.mutate({
       productId,
       variantSelectedId: variantSelected?.id ?? "",

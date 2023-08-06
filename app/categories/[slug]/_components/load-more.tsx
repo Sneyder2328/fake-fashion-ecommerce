@@ -2,7 +2,7 @@
 
 import { LoadingSpinner } from "@/app/_components/loading-spinner";
 import { commerce } from "@/app/_lib/commerce";
-import { ProductGridItems, ProductGridItemsSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-items";
+import { ProductGrid, ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
@@ -36,7 +36,7 @@ export function LoadMoreProducts({ categorySlug }: { categorySlug: string }) {
   return (
     <>
       {productsQuery.data?.pages.map((products, i) => (
-        <ProductGridItems
+        <ProductGrid
           key={i}
           products={products?.data?.map(
             ({ id, name, price, image, permalink }) => ({
@@ -51,7 +51,7 @@ export function LoadMoreProducts({ categorySlug }: { categorySlug: string }) {
       ))}
       {productsQuery.hasNextPage && (
         <div ref={ref}>
-          <ProductGridItemsSkeleton count={4} />
+          <ProductGridSkeleton count={4} />
         </div>
       )}
     </>

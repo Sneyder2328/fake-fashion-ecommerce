@@ -5,7 +5,7 @@ type Props = {
   className?: string;
 };
 
-export function CardSkeleton({ className }: Props) {
+export function ProductCardSkeleton({ className }: Props) {
   return (
     <div className={twMerge("w-full", className)}>
       <div>

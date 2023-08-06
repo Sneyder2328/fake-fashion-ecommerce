@@ -1,6 +1,6 @@
-import { MainCategory } from "@/app/categories/[slug]/_components/main";
-import { SectionHeader } from "@/app/_components/section-header";
-import { ProductGridItemsSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-items";
+import { CategoryMain } from "@/app/categories/[slug]/_components/category-main";
+import { SectionHeader } from "@/app/_components/section-header/section-header";
+import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid";
 import { InternalLinks } from "@/app/_lib/constants";
 import { Suspense } from "react";
 
@@ -32,8 +32,8 @@ export default function Category({ params: { slug } }: Props) {
         ]}
       />
       <div className="inner py-6">
-        <Suspense fallback={<ProductGridItemsSkeleton count={8}/>}>
-          <MainCategory slug={slug} />
+        <Suspense fallback={<ProductGridSkeleton count={8}/>}>
+          <CategoryMain slug={slug} />
         </Suspense>
       </div>
     </div>

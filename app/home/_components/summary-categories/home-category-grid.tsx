@@ -1,9 +1,9 @@
 import { getCategories } from "@/app/_lib/commerce";
-import { CategoryProps, HomeCategory } from "./category";
+import { CategoryProps, HomeCategory } from "./home-category-card";
 
 type Props = {};
 
-export async function SummaryCategories({}: Props) {
+export async function HomeCategoryGrid({}: Props) {
   const [cats] = await getCategories(4);
 
   if (!cats || !cats.data) return null;

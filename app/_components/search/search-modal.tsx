@@ -33,6 +33,7 @@ type Props = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };
+
 export function SearchModal({ isOpen, setIsOpen }: Props) {
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] =

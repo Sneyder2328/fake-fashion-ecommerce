@@ -19,7 +19,7 @@ function Stars({ className }: { className?: string }) {
   );
 }
 
-export function Ratings({ rating }: { rating: number }) {
+export function RatingsStars({ rating }: { rating: number }) {
   const percentage = (rating / 5.0) * 100.0;
   return (
     <div className="relative w-fit">

@@ -1,6 +1,6 @@
-import { SectionHeader } from "@/app/_components/section-header";
+import { SectionHeader } from "@/app/_components/section-header/section-header";
 import { ProductMain } from "@/app/products/[permalink]/_components/main";
-import { RelatedProducts } from "@/app/products/[permalink]/_components/grid/related-products";
+import { RelatedProductList } from "@/app/products/[permalink]/_components/grid/related-product-list";
 import { getProduct, getVariants } from "@/app/_lib/commerce";
 import { InternalLinks, VariantGroups } from "@/app/_lib/constants";
 import {
@@ -9,9 +9,9 @@ import {
 } from "@chec/commerce.js/types/product-variant-group";
 import { Variant } from "@chec/commerce.js/types/variant";
 import { notFound } from "next/navigation";
-import { ProductReviews } from "./_components/reviews";
+import { ProductReviewList } from "./_components/reviews/product-review-list";
 import { Suspense } from "react";
-import { ProductReviewsSkeleton } from "./_components/reviews/skeleton";
+import { ProductReviewListSkeleton } from "./_components/reviews/product-review-list-skeleton";
 
 function filterByName(name: string): (group: ProductVariantGroup) => boolean {
   return (group: ProductVariantGroup) => group.name === name;
@@ -125,12 +125,12 @@ export default async function ProductPage({ params: { permalink } }: Props) {
         sizeOptions={sizeVariants?.options}
         variantsIndexedByColor={variantsIndexedByColor}
         Reviews={
-          <Suspense fallback={<ProductReviewsSkeleton />}>
-            <ProductReviews permalink={permalink} />
+          <Suspense fallback={<ProductReviewListSkeleton />}>
+            <ProductReviewList permalink={permalink} />
           </Suspense>
         }
       />
-      <RelatedProducts relatedProducts={related_products} className="inner" />
+      <RelatedProductList relatedProducts={related_products} className="inner" />
     </div>
   );
 }

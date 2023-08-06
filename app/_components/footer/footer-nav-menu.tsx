@@ -1,4 +1,4 @@
-import { MenuItem } from "./menu-item";
+import { FooterMenuItem } from "./footer-menu-item";
 
 const MENU_OPTIONS = [
   {
@@ -39,12 +39,12 @@ const MENU_OPTIONS = [
   },
 ];
 
-export function NavMenu() {
+export function FooterNavMenu() {
   return (
     <div className="bg-primaryMain py-8">
       <ul className="inner grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {MENU_OPTIONS.map((option) => (
-          <MenuItem key={option.title} {...option} />
+          <FooterMenuItem key={option.title} {...option} />
         ))}
       </ul>
     </div>

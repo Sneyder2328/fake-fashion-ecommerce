@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Scrollbar } from "react-scrollbars-custom";
-import { ProductGalleryProps } from "./gallery";
+import { ProductGalleryProps } from "./product-gallery";
 import { trackYStyle } from "@/app/_lib/styles";
 import { ImageWrapper } from "@/app/_components/image-wrapper";
 

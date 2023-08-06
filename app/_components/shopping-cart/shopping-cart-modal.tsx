@@ -1,4 +1,4 @@
-import { commerce } from "./../../_lib/commerce";
+import { commerce } from "../../_lib/commerce";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { LoadingSpinner } from "@/app/_components/loading-spinner";
 import { CartItemSkeleton } from "./cart-item-skeleton";
@@ -12,6 +12,7 @@ type Props = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };
+
 export function ShoppingCartModal({ isOpen, setIsOpen }: Props) {
   const queryClient = useQueryClient();
 

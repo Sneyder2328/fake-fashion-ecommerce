@@ -6,13 +6,13 @@ import "react-slideshow-image/dist/styles.css";
 import { twMerge } from "tailwind-merge";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import React from "react";
-import { ProductCard, ProductDetails } from "../card/card";
+import { ProductCard, ProductDetails } from "../card/product-card";
 
 type Props = {
   relatedProducts: ProductDetails[];
   className?: string;
 };
-export function RelatedProducts({ relatedProducts, className }: Props) {
+export function RelatedProductList({ relatedProducts, className }: Props) {
   const slideRef = React.useRef<SlideshowRef>(null);
 
   return (

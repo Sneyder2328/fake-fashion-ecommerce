@@ -4,7 +4,7 @@ import TwIcon from "../../../public/tw-icon.svg";
 import YtIcon from "../../../public/yt-icon.svg";
 import InIcon from "../../../public/in-icon.svg";
 
-export function EmailForm() {
+export function FooterEmailForm() {
   return (
     <div className="bg-secondaryMain py-6 lg:py-2">
       <div className="inner flex flex-col items-center justify-between space-y-4 lg:flex-row lg:space-y-0">

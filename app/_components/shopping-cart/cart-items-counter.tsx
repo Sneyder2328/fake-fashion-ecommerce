@@ -1,4 +1,4 @@
-export function Counter({
+export function CardItemsCounter({
   value,
   onChange,
 }: {

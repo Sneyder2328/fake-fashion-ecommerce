@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 
-export function ProductReviewsSkeleton() {
+export function ProductReviewListSkeleton() {
   return (
     <div className="mt-0">
       <Skeleton />
@@ -10,7 +10,7 @@ export function ProductReviewsSkeleton() {
         {Array(3)
           .fill(1)
           .map((_, i) => (
-            <div className="" key={i}>
+            <div key={i}>
               <Skeleton />
               <Skeleton count={2} />
             </div>

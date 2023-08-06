@@ -1,11 +1,11 @@
-import { EmailForm } from "./email-form";
-import { NavMenu } from "./nav-menu";
+import { FooterEmailForm } from "./footer-email-form";
+import { FooterNavMenu } from "./footer-nav-menu";
 
 export function Footer() {
   return (
     <div className="w-full">
-      <EmailForm />
-      <NavMenu />
+      <FooterEmailForm />
+      <FooterNavMenu />
       <div className="bg-gray-200 py-2">
         <div className="inner flex justify-between">
           <span className="text-sm font-semibold text-gray-500">

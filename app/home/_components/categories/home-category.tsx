@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Link from "next/link";
-import { ProductGridItems } from "../../../products/[permalink]/_components/grid/product-grid-items";
+import { ProductGrid } from "../../../products/[permalink]/_components/grid/product-grid";
 import { InternalLinks } from "@/app/_lib/constants";
 import { getProductsByCategory } from "@/app/_lib/commerce";
 
@@ -19,7 +19,7 @@ export async function HomeCategory({
     <div className={classNames(className)}>
       <h2 className="text-xl font-bold uppercase text-gray-800">{slug}</h2>
 
-      <ProductGridItems
+      <ProductGrid
         products={products.data.map(
           ({ id, name, price, image, permalink }) => ({
             id,

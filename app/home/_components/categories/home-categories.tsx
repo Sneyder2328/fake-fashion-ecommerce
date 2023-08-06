@@ -1,7 +1,7 @@
 import { getCategories } from "@/app/_lib/commerce";
-import { HomeCategory } from "./category";
+import { HomeCategory } from "./home-category";
 import { Suspense } from "react";
-import { ProductGridItemsSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-items";
+import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid";
 
 export async function HomeCategories() {
   const [categories] = await getCategories(4);
@@ -16,7 +16,7 @@ export async function HomeCategories() {
         .map(({ id, slug }) => (
           <Suspense
             key={id}
-            fallback={<ProductGridItemsSkeleton className="mt-14" />}
+            fallback={<ProductGridSkeleton className="mt-14" />}
           >
             <HomeCategory className="mt-14" key={id} slug={slug} />
           </Suspense>

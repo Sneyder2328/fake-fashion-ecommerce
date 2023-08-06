@@ -2,7 +2,7 @@ import { LineItem } from "@chec/commerce.js/types/line-item";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { InternalLinks } from "@/app/_lib/constants";
-import { Counter } from "./items-counter";
+import { CardItemsCounter } from "./cart-items-counter";
 import { ImageWrapper } from "../image-wrapper";
 
 export function CartItem({
@@ -42,7 +42,7 @@ export function CartItem({
 
         <div className="flex justify-between">
           <div>
-            <Counter
+            <CardItemsCounter
               value={item.quantity}
               onChange={(quantity) => onChangeQuantity(quantity)}
             />

@@ -3,7 +3,7 @@ import { Button } from "@/app/_components/button";
 type Props = {
   className?: string;
 };
-export function FormOffer({ className }: Props) {
+export function HomeFormOffer({ className }: Props) {
   return (
     <div className={className}>
       <div className="h-full w-full bg-gradient-to-l from-slate-100 via-neutral-400 to-neutral-300 py-10">

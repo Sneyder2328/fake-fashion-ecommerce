@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
-import { ProductCard, ProductDetails } from "../card/card";
-import { CardSkeleton } from "@/app/products/[permalink]/_components/card/skeleton";
+import { ProductCard, ProductDetails } from "../card/product-card";
+import { ProductCardSkeleton } from "@/app/products/[permalink]/_components/card/product-card-skeleton";
 
-export function ProductGridItemsSkeleton({
+export function ProductGridSkeleton({
   className,
   count = 4,
 }: {
@@ -19,7 +19,7 @@ export function ProductGridItemsSkeleton({
       {Array(count)
         .fill(1)
         .map((v) => (
-          <CardSkeleton key={v} />
+          <ProductCardSkeleton key={v} />
         ))}
     </div>
   );
@@ -28,7 +28,7 @@ export function ProductGridItemsSkeleton({
 type Props = {
   products: ProductDetails[] | undefined;
 };
-export function ProductGridItems({ products }: Props) {
+export function ProductGrid({ products }: Props) {
   return (
     <div className="grid grid-cols-1 gap-6 py-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {products?.map((product) => (

@@ -4,9 +4,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 import { Review } from "../../reviews/route";
-import { Ratings } from "./ratings";
+import { RatingsStars } from "../../../../_components/ratings-stars";
 
-export function ItemReview({ review }: { review: Review }) {
+export function ProductReview({ review }: { review: Review }) {
   return (
     <div key={review.id}>
       <div className="flex justify-between">
@@ -15,7 +15,7 @@ export function ItemReview({ review }: { review: Review }) {
           <span className="text-sm leading-none text-slate-500">
             {dayjs().to(review.createdAt)}
           </span>
-          <Ratings rating={review.rating} />
+          <RatingsStars rating={review.rating} />
         </div>
       </div>
       <p className="mt-2 text-slate-500">{review.content}</p>

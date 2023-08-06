@@ -8,9 +8,9 @@ import {
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { commerce } from "@/app/_lib/commerce";
-import { ShoppingCartModal } from "@/app/_components/shopping-cart/modal";
-import { LoginModal } from "@/app/_components/login/modal";
-import { SearchModal } from "../search/modal";
+import { ShoppingCartModal } from "@/app/_components/shopping-cart/shopping-cart-modal";
+import { LoginModal } from "@/app/_components/login/login-modal";
+import { SearchModal } from "../search/search-modal";
 
 export function NavActions({}) {
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false);

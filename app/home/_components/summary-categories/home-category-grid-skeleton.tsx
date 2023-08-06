@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 
-export function GridCategoriesSkeleton() {
+export function CategoryGridSkeleton() {
   return (
     <div
       className={
