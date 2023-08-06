@@ -32,7 +32,7 @@ export default {
         primaryMain: "#fefefe",
         primaryContrast: "#f8f8f8",
         primaryMainText: "#252525",
-        primaryLightText: "#9c9c9c",
+        primaryLightText: "#878787",
         primaryContrastText: "#c2c2c2",
         secondaryMain: "#121212",
         secondaryContrast: "#d3d3d3",

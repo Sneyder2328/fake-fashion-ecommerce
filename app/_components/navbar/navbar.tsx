@@ -5,10 +5,21 @@ import Link from "next/link";
 import { NavbarActions } from "./navbar-actions";
 import { useState } from "react";
 import classNames from "classnames";
+import { usePathname, useRouter } from "next/navigation";
 
 function Item({ name, url }: { name: string; url: string }) {
+  const pathname = usePathname();
+
   return (
-    <li className="text-base font-semibold text-primaryMainText hover:text-primaryLightText lg:text-[0.92rem]">
+    <li
+      className={classNames(
+        "relative flex h-full items-center text-base font-semibold text-primaryMainText hover:text-primaryLightText lg:text-[0.92rem]",
+        {
+          "after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-11/12 after:-translate-x-1/2 after:bg-secondaryMain after:content-['']":
+            pathname === url,
+        },
+      )}
+    >
       <Link href={url}>{name}</Link>
     </li>
   );
@@ -27,7 +38,7 @@ export default function Navbar() {
         </Link>
         <ul
           className={classNames(
-            "absolute left-0 top-14 z-10 w-full space-y-3 border-t border-secondaryContrast bg-primaryMain p-6 shadow lg:static lg:flex lg:w-fit lg:space-x-4 lg:space-y-0 lg:border-0 lg:p-0 lg:shadow-none",
+            "absolute left-0 top-14 z-10 h-full w-full space-y-3 border-t border-secondaryContrast bg-primaryMain p-6 shadow lg:static lg:flex lg:w-fit lg:space-x-4 lg:space-y-0 lg:border-0 lg:p-0 lg:shadow-none",
             {
               hidden: !mobileMenuIsOpen,
             },
@@ -36,13 +47,11 @@ export default function Navbar() {
             },
           )}
         >
-          <Item name="About Us" url="/" />
+          <Item name="Home" url={InternalLinks.HOME} />
           <Item name="Women" url={InternalLinks.CATEGORY("women")} />
           <Item name="Men" url={InternalLinks.CATEGORY("men")} />
           <Item name="Beauty" url={InternalLinks.CATEGORY("beauty")} />
           <Item name="Kids" url={InternalLinks.CATEGORY("kids")} />
-          <Item name="Blog" url={"/"} />
-          <Item name="Contact" url={"/"} />
         </ul>
         <NavbarActions />
         <div className="flex lg:hidden">

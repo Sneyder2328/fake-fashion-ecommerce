@@ -30,9 +30,9 @@ export function HomeBlog({ className }: { className?: string }) {
   return (
     <div className={className}>
       <div className="flex items-center justify-between">
-        <h4 className="text-xl font-extrabold uppercase text-primaryMainText">
+        <span className="text-xl font-extrabold uppercase text-primaryMainText">
           Latest from blog
-        </h4>
+        </span>
         <Link
           href={"/"}
           className="text-sm font-bold uppercase text-primaryLightText"

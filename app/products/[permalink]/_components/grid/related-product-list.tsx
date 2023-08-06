@@ -15,9 +15,11 @@ type Props = {
 export function RelatedProductList({ relatedProducts, className }: Props) {
   const slideRef = React.useRef<SlideshowRef>(null);
 
+  if (relatedProducts?.length === 0) return null;
+  
   return (
     <div className={twMerge("flex flex-col py-6", className)}>
-      <div className="w-full flex justify-between items-center py-4">
+      <div className="flex w-full items-center justify-between py-4">
         <h2 className="text-xl font-bold uppercase">Related Products</h2>
         <div className="flex items-center space-x-2">
           <ChevronLeftIcon

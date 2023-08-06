@@ -85,6 +85,8 @@ export function SearchModal({ isOpen, setIsOpen }: Props) {
     <Modal title="Search" onHide={() => setIsOpen(false)} isOpen={isOpen}>
       <div className="flex h-full flex-col">
         <Select
+          id="select-category"
+          aria-label="Select category"
           options={options}
           onChange={(newValue) =>
             newValue &&

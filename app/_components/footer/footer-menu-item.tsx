@@ -8,9 +8,11 @@ function FooterMenuTitle({ text }: { text: string }) {
 
 function FooterMenuSubItem({ text, url }: { text: string; url: string }) {
   return (
-    <Link href={url}>
-      <span className="text-sm text-gray-800 hover:underline">{text}</span>
-    </Link>
+    <li>
+      <Link href={url}>
+        <span className="text-sm text-gray-800 hover:underline">{text}</span>
+      </Link>
+    </li>
   );
 }
 

@@ -23,14 +23,13 @@ type Props = {
 
 export function Modal({ isOpen, title, onHide, children }: Props) {
   useEffect(() => {
+    // When the modal is open then make whole body page not scrollable to the user can focus on the modal
     if (isOpen) {
       document.body.classList.add("overflow-y-hidden");
     } else {
       document.body.classList.remove("overflow-y-hidden");
     }
   }, [isOpen]);
-
-  // if (!isOpen) return null;
 
   return (
     <div

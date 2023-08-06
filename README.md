@@ -8,8 +8,6 @@ Misto is a fashion-focused e-commerce platform built as a learning project using
 - **Cart Management**: Add items to your cart and manage them effortlessly.
 - **User Authentication**: Secure login and registration features.
 - **Responsive Design**: Shop on any device with our responsive design.
-  
-(Add or remove features based on what you implemented.)
 
 ## Technologies Used
 
@@ -17,7 +15,7 @@ Misto is a fashion-focused e-commerce platform built as a learning project using
 - **Tailwind CSS**: For styling and UI.
 - **[Commerce.js](https://commercejs.com/)  SDK**: Rest API for retrieving products data, shopping carts, assets, etc.
 - **[Heroicons](https://heroicons.com/)**: SVG Icons.
-- **[Design](https://www.behance.net/gallery/111779465/MiStoFree-eCommerce-templateStoreShopMinimalist)**: Behance design by Oleh Chabanov taken as main inspiration for website UI.
+- **[Design Template](https://www.behance.net/gallery/111779465/MiStoFree-eCommerce-templateStoreShopMinimalist)**: E-commerce design template on Behance by Oleh Chabanov.
 
 ## Setup and Installation
 
@@ -28,14 +26,17 @@ Misto is a fashion-focused e-commerce platform built as a learning project using
     ```bash
     cd fake-fashion-ecommerce
     npm install
-3. Start the development server:
+3. Add environment variables in .env.local file, take .env.example as guide for the variables you will need.
+    ```bash
+    cp .env.example .env.local
+4. Start the development server:
     ```bash
     npm run dev
     # or
     yarn dev
     # or
     pnpm dev
-4. Open your browser and navigate to "http://localhost:3000"
+5. Open your browser and navigate to "http://localhost:3000"
 
 ## Contributing
 1. Fork the project.
