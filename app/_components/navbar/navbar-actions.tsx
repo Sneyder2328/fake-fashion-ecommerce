@@ -12,7 +12,7 @@ import { ShoppingCartModal } from "@/app/_components/shopping-cart/shopping-cart
 import { LoginModal } from "@/app/_components/login/login-modal";
 import { SearchModal } from "../search/search-modal";
 
-export function NavActions({}) {
+export function NavbarActions() {
   const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);

@@ -17,7 +17,7 @@ export function SectionHeader({ title, items, permalink }: Props) {
     <div className={classNames("w-full bg-primaryContrast")}>
       <div className="inner py-4">
         <div className="flex justify-between">
-          <ul className="flex items-center space-x-2">
+          <ul className="flex flex-col md:space-x-2 md:flex-row md:items-center">
             {items.map((item, index) => (
               <Fragment key={item.name}>
                 <ItemLink

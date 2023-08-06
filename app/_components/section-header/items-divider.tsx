@@ -1,7 +1,9 @@
 export function ItemsDivider() {
   return (
     <li>
-      <span className="text-sm font-semibold text-gray-500">{" > "}</span>
+      <span className="hidden text-sm font-semibold text-gray-500 md:inline">
+        {" > "}
+      </span>
     </li>
   );
 }

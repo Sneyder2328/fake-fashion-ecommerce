@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import Navbar from "@/app/_components/navbar";
+import Navbar from "@/app/_components/navbar/navbar";
 import { Footer } from "@/app/_components/footer/footer";
 import { gelasio, nunito_sans } from "./_lib/fonts";
 import { ReactQueryProvider } from "./_components/react-query-provider";
