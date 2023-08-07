@@ -21,7 +21,7 @@ export function ImageIndicators({
         noScrollX={true}
         trackYProps={{ style: trackYStyle }}
       >
-        {images.map(({ id, url, image_dimensions }, i) => (
+        {images.map(({ id, url }, i) => (
           <div
             key={id}
             className={classNames(

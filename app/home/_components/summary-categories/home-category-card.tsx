@@ -32,7 +32,10 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
         category.className,
       )}
     >
-      <Link href={InternalLinks.CATEGORY(category.slug)} className="relative">
+      <Link
+        href={InternalLinks.CATEGORY(category.slug)}
+        className="relative h-full w-full"
+      >
         <ImageWrapper
           className="h-full w-full object-cover"
           src={category.assets[0].url}

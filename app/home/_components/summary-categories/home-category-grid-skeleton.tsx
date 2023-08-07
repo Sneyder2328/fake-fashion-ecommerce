@@ -4,16 +4,16 @@ export function CategoryGridSkeleton() {
   return (
     <div
       className={
-        "inner grid h-screen grid-cols-1 grid-rows-2 gap-4 xs:grid-cols-2 md:max-h-96 md:grid-cols-4 xl:max-h-[480px] 2xl:max-h-[540px]"
+        "inner grid grid-cols-1 grid-rows-2 gap-4 xs:grid-cols-2 md:aspect-[2/1] md:grid-cols-4"
       }
     >
       <Skeleton
         className="h-full"
-        containerClassName="md:col-span-2 md:row-span-2 h-full"
+        containerClassName="h-full md:col-span-2 md:row-span-2"
       />
       <Skeleton className="h-full" containerClassName="h-full" />
       <Skeleton className="h-full" containerClassName="h-full" />
-      <Skeleton className="h-full" containerClassName="md:col-span-2 h-full" />
+      <Skeleton className="h-full" containerClassName="h-full md:col-span-2" />
     </div>
   );
 }

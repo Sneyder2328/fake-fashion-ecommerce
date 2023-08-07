@@ -14,8 +14,6 @@ export function BlogCard({ image, title, description }: BlogCardProps) {
           src={image}
           alt={title}
           fill={true}
-          // width={800}
-          // height={533}
         />
       </div>
       <div className="absolute top-3/4 w-10/12 bg-white p-4">
