@@ -29,9 +29,9 @@ export function ColorPicker({
         {colorImages
           .filter(({ image }) => !!image)
           .map(({ image, colorOption }) => (
-            <ImageWrapper
+            <div
               className={classNames(
-                "ml-2 mt-2 w-10 border-2 border-solid hover:cursor-pointer",
+                "relative ml-2 mt-2 aspect-cardImage w-10 border-2 border-solid hover:cursor-pointer",
                 {
                   "border-gray-500": colorOption.id === colorOptionSelected?.id,
                 },
@@ -46,17 +46,19 @@ export function ColorPicker({
                   // ) && sizeOptionSelected.implicit !== true,
                 },
               )}
-              src={image!.url}
-              width={image!.image_dimensions.width}
-              height={image!.image_dimensions.height}
-              minifyFactor={0.2}
-              key={image!.id}
-              onClick={() => {
-                setColorOptionSelected(colorOption);
-                replaceShallow("color", colorOption.name);
-              }}
-              alt={colorOption.name}
-            />
+            >
+              <ImageWrapper
+                className={"h-full"}
+                src={image!.url}
+                fill={true}
+                key={image!.id}
+                onClick={() => {
+                  setColorOptionSelected(colorOption);
+                  replaceShallow("color", colorOption.name);
+                }}
+                alt={colorOption.name}
+              />
+            </div>
           ))}
       </div>
     </>

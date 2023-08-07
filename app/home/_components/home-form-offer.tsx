@@ -7,7 +7,7 @@ export function HomeFormOffer({ className }: Props) {
   return (
     <div className={className}>
       <div className="h-full w-full bg-gradient-to-l from-slate-100 via-neutral-400 to-neutral-300 py-10">
-        <div className="mx-auto my-auto flex w-11/12 max-w-sm flex-col items-center rounded bg-primaryMain px-8 py-8 sm:px-16 sm:py-14">
+        <div className="mx-auto my-auto flex aspect-[4/3] w-11/12 max-w-sm flex-col items-center justify-between rounded bg-primaryMain px-8 py-8 lg:max-w-md lg:px-24 lg:py-24">
           <span className="text-xs font-bold uppercase text-primaryLightText">
             Special offer
           </span>

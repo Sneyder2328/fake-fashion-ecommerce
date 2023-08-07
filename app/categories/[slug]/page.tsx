@@ -1,8 +1,8 @@
 import { CategoryMain } from "@/app/categories/[slug]/_components/category-main";
 import { SectionHeader } from "@/app/_components/section-header/section-header";
-import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid";
 import { InternalLinks } from "@/app/_lib/constants";
 import { Suspense } from "react";
+import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-skeleton";
 
 type Props = {
   params: {
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { slug } }: Props) {
-  const hide = true
+  const hide = true;
   return {
     title: slug.toUpperCase(),
     description: `${slug.toUpperCase()} Category at Fake fashion e-commerce store`,
@@ -23,7 +23,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
         follow: hide,
       },
     },
-  }
+  };
 }
 
 export default function Category({ params: { slug } }: Props) {
@@ -41,7 +41,7 @@ export default function Category({ params: { slug } }: Props) {
         ]}
       />
       <div className="inner py-6">
-        <Suspense fallback={<ProductGridSkeleton count={8}/>}>
+        <Suspense fallback={<ProductGridSkeleton count={8} />}>
           <CategoryMain slug={slug} />
         </Suspense>
       </div>

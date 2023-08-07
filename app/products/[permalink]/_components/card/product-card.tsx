@@ -21,14 +21,12 @@ export function ProductCard({
   return (
     <Link href={`/products/${permalink}`}>
       <div className={twMerge("w-full", className)}>
-        <div className="relative">
+        <div className="bg-gray relative aspect-cardImage">
           {!!image && (
             <ImageWrapper
-              className="w-full"
+              fill={true}
               src={image.url}
               alt={name}
-              width={image.image_dimensions.width}
-              height={image.image_dimensions.height}
             />
           )}
           <div className="duration-400 absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white to-black opacity-0 transition-opacity hover:opacity-20" />

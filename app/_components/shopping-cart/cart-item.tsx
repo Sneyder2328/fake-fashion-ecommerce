@@ -16,16 +16,11 @@ export function CartItem({
 }) {
   return (
     <div className="flex border-b-[2px] border-b-primaryContrast pb-4 pr-2">
-      {!!item.image?.url && (
-        <ImageWrapper
-          src={item.image.url}
-          alt={item.name}
-          className="w-16 shrink-0"
-          minifyFactor={0.3}
-          width={item.image.image_dimensions.width}
-          height={item.image.image_dimensions.height}
-        />
-      )}
+      <div className="relative aspect-cardImage w-16 shrink-0">
+        {!!item.image?.url && (
+          <ImageWrapper src={item.image.url} alt={item.name} fill={true} />
+        )}
+      </div>
       <div className="ml-4 flex grow flex-col justify-between">
         <div className="flex flex-col">
           <Link href={InternalLinks.PRODUCT(item.permalink)}>

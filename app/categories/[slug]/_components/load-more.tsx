@@ -2,7 +2,8 @@
 
 import { LoadingSpinner } from "@/app/_components/loading-spinner";
 import { commerce } from "@/app/_lib/commerce";
-import { ProductGrid, ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid";
+import { ProductGrid } from "@/app/products/[permalink]/_components/grid/product-grid";
+import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-skeleton";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";

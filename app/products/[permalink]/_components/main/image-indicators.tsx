@@ -22,15 +22,9 @@ export function ImageIndicators({
         trackYProps={{ style: trackYStyle }}
       >
         {images.map(({ id, url, image_dimensions }, i) => (
-          <ImageWrapper
-            key={id}
-            src={url}
-            width={image_dimensions.width}
-            height={image_dimensions.height}
-            minifyFactor={0.2}
-            alt={id}
+          <div
             className={classNames(
-              "mb-3 h-[105px] w-full border-2 border-solid hover:cursor-pointer",
+              "relative mb-3 aspect-cardImage w-full border-2 border-solid hover:cursor-pointer",
               {
                 "border-gray-500 opacity-100": i === indexSlide,
               },
@@ -38,8 +32,16 @@ export function ImageIndicators({
                 "opacity-50": i !== indexSlide,
               },
             )}
-            onMouseEnter={() => goToSlide(i)}
-          />
+          >
+            <ImageWrapper
+              key={id}
+              src={url}
+              className="h-full"
+              fill={true}
+              alt={id}
+              onMouseEnter={() => goToSlide(i)}
+            />
+          </div>
         ))}
       </Scrollbar>
     </div>

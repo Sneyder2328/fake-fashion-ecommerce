@@ -63,18 +63,18 @@ export function ProductGallery({ images }: ProductGalleryProps) {
           transitionDuration={130}
           onStartChange={(_, to) => setIndex(to)}
         >
-          {images.map(({ id, url, image_dimensions: { width, height } }) => (
+          {images.map(({ id, url }) => (
             <div key={id} className="pl-[1px] pr-[1px]">
               <Zoom>
-                <ImageWrapper
-                  src={url}
-                  className="w-full select-none"
-                  minifyDimensions={false}
-                  alt={id}
-                  priority
-                  width={width}
-                  height={height}
-                />
+                <div className="relative aspect-cardImage w-full">
+                  <ImageWrapper
+                    src={url}
+                    className="w-full select-none"
+                    alt={id}
+                    fill={true}
+                    priority
+                  />
+                </div>
               </Zoom>
             </div>
           ))}

@@ -28,7 +28,7 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
   return (
     <div
       className={twMerge(
-        "group relative hover:cursor-pointer",
+        "group relative aspect-square hover:cursor-pointer md:aspect-auto",
         category.className,
       )}
     >
@@ -36,9 +36,7 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
         <ImageWrapper
           className="h-full w-full object-cover"
           src={category.assets[0].url}
-          width={category.assets[0].image_dimensions.width}
-          height={category.assets[0].image_dimensions.height}
-          minifyFactor={0.3}
+          fill={true}
           priority
           alt={category.name}
         />

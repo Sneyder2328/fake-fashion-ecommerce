@@ -1,7 +1,7 @@
 import { getCategories } from "@/app/_lib/commerce";
 import { HomeCategory } from "./home-category";
 import { Suspense } from "react";
-import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid";
+import { ProductGridSkeleton } from "@/app/products/[permalink]/_components/grid/product-grid-skeleton";
 
 export async function HomeCategories() {
   const [categories] = await getCategories(4);

@@ -16,18 +16,17 @@ export function SearchItem({
       <Link
         href={InternalLinks.PRODUCT(product.permalink)}
         onClick={onHide}
-        className="flex hover:bg-primaryContrast w-full py-2"
+        className="flex w-full py-2 hover:bg-primaryContrast"
       >
-        {!!product.image?.url && (
-          <ImageWrapper
-            src={product.image.url}
-            alt={product.name}
-            className="w-16 shrink-0"
-            minifyFactor={0.3}
-            width={product.image.image_dimensions.width}
-            height={product.image.image_dimensions.height}
-          />
-        )}
+        <div className="relative aspect-cardImage w-16 shrink-0">
+          {!!product.image?.url && (
+            <ImageWrapper
+              src={product.image.url}
+              alt={product.name}
+              fill={true}
+            />
+          )}
+        </div>
         <div className="ml-4 flex grow flex-col">
           <span className="text-primaryLightText hover:underline">
             {product.name}

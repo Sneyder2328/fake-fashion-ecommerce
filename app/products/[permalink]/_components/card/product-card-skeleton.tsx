@@ -9,7 +9,7 @@ export function ProductCardSkeleton({ className }: Props) {
   return (
     <div className={twMerge("w-full", className)}>
       <div>
-        <Skeleton className="h-96" />
+        <Skeleton className="w-full aspect-cardImage" />
       </div>
       <span className="block text-xs font-medium text-gray-500 mt-3">
         <Skeleton />

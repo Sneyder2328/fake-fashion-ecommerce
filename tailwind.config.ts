@@ -24,6 +24,9 @@ export default {
       ...defaultTheme.screens,
     },
     extend: {
+      aspectRatio: {
+        cardImage: "624 / 937",
+      },
       fontFamily: {
         sans: ["var(--font-nunito-sans)"],
         serif: ["var(--font-gelasio)"],
