@@ -33,10 +33,8 @@ export async function generateMetadata({ params: { permalink } }: Props) {
   const hide = true; // hide to crawlers as this is a fake store
 
   return {
-    title: `${
-      product.seo.title || product.name
-    } | MiSto - Fake fashion e-commerce store`,
-    description: product.seo.description || product.description,
+    title: product.seo.title ?? product.name,
+    description: product.seo.description ?? product.description,
     robots: {
       index: hide,
       follow: hide,
@@ -130,7 +128,10 @@ export default async function ProductPage({ params: { permalink } }: Props) {
           </Suspense>
         }
       />
-      <RelatedProductList relatedProducts={related_products} className="inner" />
+      <RelatedProductList
+        relatedProducts={related_products}
+        className="inner"
+      />
     </div>
   );
 }

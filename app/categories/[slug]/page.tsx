@@ -11,9 +11,18 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { slug } }: Props) {
+  const hide = true
   return {
-    title: `${slug.toUpperCase()} | MiSto - Fake fashion e-commerce store`,
+    title: slug.toUpperCase(),
     description: `${slug.toUpperCase()} Category at Fake fashion e-commerce store`,
+    robots: {
+      index: hide,
+      follow: hide,
+      googleBot: {
+        index: hide,
+        follow: hide,
+      },
+    },
   }
 }
 

@@ -6,11 +6,21 @@ import Navbar from "@/app/_components/navbar/navbar";
 import { Footer } from "@/app/_components/footer/footer";
 import { gelasio, nunito_sans } from "./_lib/fonts";
 import { ReactQueryProvider } from "./_components/react-query-provider";
+import { FakeDisclaimer } from "./_components/fake-disclaimer";
+
+const SITE_NAME = "MiSto - Fake E-commerce Store";
 
 export const metadata: Metadata = {
-  title: "MiSto - Fake E-commerce Store",
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
+  },
   description:
     "This is a fake e-commerce store built for educational purposes, do not use it for any real purpose.",
+  robots: {
+    follow: false,
+    index: false,
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +34,7 @@ export default function RootLayout({
         className={`${nunito_sans.variable} ${gelasio.variable} flex flex-col`}
       >
         <ReactQueryProvider>
+          <FakeDisclaimer />
           <Navbar />
           {children}
           <Footer />

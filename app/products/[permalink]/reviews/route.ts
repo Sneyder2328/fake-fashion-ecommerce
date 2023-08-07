@@ -55,4 +55,4 @@ export async function GET(
   });
 }
 
-export const revalidate = 5 * 60; // keep in cache up to 5 minutes
+export const revalidate = 60 * 60; // keep in cache up to 60 minutes
