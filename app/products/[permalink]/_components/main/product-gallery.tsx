@@ -40,7 +40,10 @@ export function ProductGallery({ images }: ProductGalleryProps) {
 
   useEffect(() => {
     // this is for the edge case in which images list was updated but last slider index was at a position not valid for the new images list
-    index >= images.length && slideRef.current?.goTo(0);
+    if (index >= images.length) {
+      slideRef.current?.goTo(0);
+      setIndex(0);
+    }
   }, [images.length, index]);
 
   return (
