@@ -30,6 +30,7 @@ export function ColorPicker({
           .filter(({ image }) => !!image)
           .map(({ image, colorOption }) => (
             <div
+              key={image!.id}
               className={classNames(
                 "relative ml-2 mt-2 aspect-cardImage w-10 border-2 border-solid hover:cursor-pointer",
                 {
@@ -51,7 +52,6 @@ export function ColorPicker({
                 className={"h-full"}
                 src={image!.url}
                 fill={true}
-                key={image!.id}
                 onClick={() => {
                   setColorOptionSelected(colorOption);
                   replaceShallow("color", colorOption.name);
