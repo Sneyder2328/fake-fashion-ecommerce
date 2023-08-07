@@ -23,6 +23,7 @@ export function ImageIndicators({
       >
         {images.map(({ id, url, image_dimensions }, i) => (
           <div
+            key={id}
             className={classNames(
               "relative mb-3 aspect-cardImage w-full border-2 border-solid hover:cursor-pointer",
               {
@@ -34,7 +35,6 @@ export function ImageIndicators({
             )}
           >
             <ImageWrapper
-              key={id}
               src={url}
               className="h-full"
               fill={true}
