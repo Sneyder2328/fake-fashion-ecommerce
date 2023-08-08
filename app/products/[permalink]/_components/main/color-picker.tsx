@@ -51,6 +51,7 @@ export function ColorPicker({
               <ImageWrapper
                 className={"h-full"}
                 src={image!.url}
+                sizes="(max-width: 640px) 14vw, 7vw"
                 fill={true}
                 onClick={() => {
                   setColorOptionSelected(colorOption);

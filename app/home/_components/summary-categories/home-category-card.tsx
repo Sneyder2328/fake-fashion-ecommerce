@@ -39,6 +39,7 @@ export function HomeCategory(category: CategoryProps & { className?: string }) {
         <ImageWrapper
           className="h-full w-full object-cover"
           src={category.assets[0].url}
+          sizes="(max-width: 480px) 90vw, (max-width: 768px) 50vw, 40vw"
           fill={true}
           priority
           alt={category.name}

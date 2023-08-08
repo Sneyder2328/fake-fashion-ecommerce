@@ -76,6 +76,7 @@ export function ProductGallery({ images, variantId }: ProductGalleryProps) {
                   <ImageWrapper
                     src={url}
                     className="w-full select-none"
+                    sizes="(max-width: 768px) 90vw, (max-width: 1024px) 40vw, 30vw"
                     alt={id}
                     fill={true}
                     priority

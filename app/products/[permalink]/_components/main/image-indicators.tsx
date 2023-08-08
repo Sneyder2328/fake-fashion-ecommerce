@@ -38,6 +38,7 @@ export function ImageIndicators({
               src={url}
               className="h-full"
               fill={true}
+              sizes="7vw"
               alt={id}
               onMouseEnter={() => goToSlide(i)}
             />

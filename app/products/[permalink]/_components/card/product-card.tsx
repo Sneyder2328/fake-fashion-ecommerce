@@ -25,6 +25,7 @@ export function ProductCard({
           {!!image && (
             <ImageWrapper
               fill={true}
+              sizes="(max-width: 480px) 90vw, (max-width: 768px) 50vw, (max-width: 1024px) 30vw, 22vw"
               src={image.url}
               alt={name}
             />

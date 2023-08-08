@@ -18,7 +18,12 @@ export function CartItem({
     <div className="flex border-b-[2px] border-b-primaryContrast pb-4 pr-2">
       <div className="relative aspect-cardImage w-16 shrink-0">
         {!!item.image?.url && (
-          <ImageWrapper src={item.image.url} alt={item.name} fill={true} />
+          <ImageWrapper
+            src={item.image.url}
+            alt={item.name}
+            fill={true}
+            sizes="(max-width: 480px) 20vw, (max-width: 1024px) 15vw, 10vw"
+          />
         )}
       </div>
       <div className="ml-4 flex grow flex-col justify-between">

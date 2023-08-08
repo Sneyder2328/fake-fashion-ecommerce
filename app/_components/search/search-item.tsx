@@ -23,6 +23,7 @@ export function SearchItem({
             <ImageWrapper
               src={product.image.url}
               alt={product.name}
+              sizes="(max-width: 480px) 20vw, (max-width: 1024px) 15vw, 10vw"
               fill={true}
             />
           )}
