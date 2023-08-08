@@ -18,9 +18,10 @@ export type ProductGalleryProps = {
       height: number;
     };
   }[];
+  variantId: string;
 };
 
-export function ProductGallery({ images }: ProductGalleryProps) {
+export function ProductGallery({ images, variantId }: ProductGalleryProps) {
   const [index, setIndex] = React.useState(0);
 
   const slideRef = React.useRef<SlideshowRef>(null);
@@ -39,12 +40,10 @@ export function ProductGallery({ images }: ProductGalleryProps) {
   };
 
   useEffect(() => {
-    // this is for the edge case in which images list was updated but last slider index was at a position not valid for the new images list
-    if (index >= images.length) {
-      slideRef.current?.goTo(0);
-      setIndex(0);
-    }
-  }, [images.length, index]);
+    // update index each time a different product variant is selected
+    slideRef.current?.goTo(0);
+    setIndex(0);
+  }, [variantId]);
 
   return (
     <div className="flex justify-between">
@@ -52,16 +51,20 @@ export function ProductGallery({ images }: ProductGalleryProps) {
         <ImageIndicators
           images={images}
           indexSlide={index}
-          goToSlide={(i) => slideRef.current?.goTo(i)}
+          goToSlide={(i) => {
+            console.log("go to slide", i);
+            slideRef.current?.goTo(i);
+          }}
         />
       </div>
       <div className="w-full lg:w-[calc(100%-100px)]">
         <Fade
           {...properties}
+          key={variantId}
           defaultIndex={0}
           ref={slideRef}
           autoplay={false}
-          infinite={false}
+          infinite={true}
           canSwipe={false}
           transitionDuration={130}
           onStartChange={(_, to) => setIndex(to)}

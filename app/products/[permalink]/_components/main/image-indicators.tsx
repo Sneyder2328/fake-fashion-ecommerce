@@ -7,7 +7,7 @@ import { ImageWrapper } from "@/app/_components/image-wrapper";
 type ImageIndicatorsProps = {
   indexSlide: number;
   goToSlide: (index: number) => void;
-} & ProductGalleryProps;
+} & Pick<ProductGalleryProps, "images">;
 
 export function ImageIndicators({
   indexSlide,

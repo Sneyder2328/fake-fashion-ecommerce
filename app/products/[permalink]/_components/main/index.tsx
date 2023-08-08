@@ -128,7 +128,10 @@ export function ProductMain({
     <div className="inner flex flex-col space-y-6 pb-6 pt-6 md:flex-row md:space-y-0">
       <div className="mx-auto w-11/12 md:w-1/2">
         {!!variantSelected?.assets && (
-          <ProductGallery images={variantSelected.assets} />
+          <ProductGallery
+            images={variantSelected.assets}
+            variantId={variantSelected.id}
+          />
         )}
       </div>
       <div className="relative w-11/12 pl-5 md:w-1/2">
