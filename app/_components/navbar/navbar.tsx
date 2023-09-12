@@ -48,13 +48,9 @@ export default function Navbar() {
         <ul
           className={classNames(
             "absolute left-0 top-14 z-10 w-full transform space-y-3 border-t border-secondaryContrast bg-primaryMain p-6 shadow transition-all duration-300 lg:static lg:flex lg:h-full lg:w-fit lg:space-x-8 lg:space-y-0 lg:border-0 lg:p-0 lg:shadow-none",
-            {
-              "invisible -translate-y-full opacity-0 lg:visible lg:translate-y-0 lg:opacity-100":
-                !isMobileNavOpen,
-            },
-            {
-              "visible translate-y-0 opacity-100": isMobileNavOpen,
-            },
+            isMobileNavOpen
+              ? "visible translate-y-0 opacity-100"
+              : "invisible -translate-y-full opacity-0 lg:visible lg:translate-y-0 lg:opacity-100",
           )}
         >
           <Item

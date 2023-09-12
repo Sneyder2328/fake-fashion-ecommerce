@@ -36,22 +36,14 @@ export function Modal({ isOpen, title, onHide, children }: Props) {
       onClick={onHide}
       className={classNames(
         "no-scrollbar fixed left-0 top-0 z-10 m-0 h-screen w-screen overflow-y-scroll bg-gray-400 bg-opacity-60 p-0 transition-all duration-500",
-        {
-          "block bg-opacity-60": isOpen,
-        },
-        {
-          "invisible bg-opacity-0": !isOpen,
-        },
+        isOpen ? "block bg-opacity-60" : "invisible bg-opacity-0",
       )}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         className={classNames(
           "mx-auto flex h-screen w-10/12 transform flex-col bg-primaryMain transition-transform duration-300 md:mr-0 md:max-w-sm",
-          {
-            "translate-y-0": isOpen,
-            "translate-y-full": !isOpen,
-          },
+          isOpen ? "translate-y-0" : "translate-y-full",
         )}
       >
         <ModalTitle title={title} onHide={onHide} />

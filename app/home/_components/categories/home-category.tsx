@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import Link from "next/link";
 import { ProductGrid } from "../../../products/[permalink]/_components/grid/product-grid";
 import { InternalLinks } from "@/app/_lib/constants";
@@ -16,7 +15,7 @@ export async function HomeCategory({
   if (!products || !products.data) return null;
 
   return (
-    <div className={classNames(className)}>
+    <div className={className}>
       <h2 className="text-xl font-bold uppercase text-gray-800">{slug}</h2>
 
       <ProductGrid

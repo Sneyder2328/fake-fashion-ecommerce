@@ -39,11 +39,7 @@ export function SizePicker({
                 "border-gray-500":
                   sizeOption.id === sizeOptionSelected?.id &&
                   sizeOptionSelected.implicit != true,
-              },
-              {
                 "opacity-100": isAvailable(sizeOption),
-              },
-              {
                 "opacity-50": !isAvailable(sizeOption),
               },
             )}

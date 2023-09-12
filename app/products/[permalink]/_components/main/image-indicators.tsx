@@ -26,12 +26,7 @@ export function ImageIndicators({
             key={id}
             className={classNames(
               "relative mb-3 aspect-cardImage w-full border-2 border-solid hover:cursor-pointer",
-              {
-                "border-gray-500 opacity-100": i === indexSlide,
-              },
-              {
-                "opacity-50": i !== indexSlide,
-              },
+              i === indexSlide ? "border-gray-500 opacity-100" : "opacity-50",
             )}
           >
             <ImageWrapper

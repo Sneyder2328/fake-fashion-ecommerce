@@ -1,6 +1,5 @@
 import { Button } from "@/app/_components/button";
 import { LoadingSpinner } from "@/app/_components/loading-spinner";
-import classNames from "classnames";
 
 type Props = {
   price?: string;
@@ -19,14 +18,11 @@ export function AddToCart({ price, isAvailable, isLoading, onClick }: Props) {
       <Button
         disabled={isAvailable !== true}
         onClick={onClick}
-        className={classNames(
-          {
-            "bg-gray-600 hover:cursor-not-allowed": isAvailable !== true,
-          },
-          {
-            "bg-gray-800 hover:bg-gray-600": isAvailable === true,
-          },
-        )}
+        className={
+          isAvailable === true
+            ? "bg-gray-800 hover:bg-gray-600"
+            : "bg-gray-600 hover:cursor-not-allowed"
+        }
       >
         {isLoading === false && textBtn}
         {isLoading === true && <LoadingSpinner size={16} />}

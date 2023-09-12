@@ -35,11 +35,7 @@ export function ColorPicker({
                 "relative ml-2 mt-2 aspect-cardImage w-10 border-2 border-solid hover:cursor-pointer",
                 {
                   "border-gray-500": colorOption.id === colorOptionSelected?.id,
-                },
-                {
                   "opacity-100": isAvailable(colorOption),
-                },
-                {
                   "opacity-50": !isAvailable(colorOption),
                   // !getVariantByColorAndSize(
                   //   colorOption,
